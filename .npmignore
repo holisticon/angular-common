@@ -1,0 +1,13 @@
+.idea/
+.awcache/
+dist/
+node/
+node_modules/
+test/
+typings/
+target/
+*.log
+*.tgz
+*.iml
+.npmrc
+.nvmrc
