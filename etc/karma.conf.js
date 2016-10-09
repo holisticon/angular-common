@@ -50,7 +50,7 @@ module.exports = function (config) {
     webpack: webpackConfig,
 
     coverageReporter: {
-      dir: 'target/coverage/',
+      dir: 'target/coverage-reports/',
       reporters: [
         {type: 'text-summary'},
         {type: 'json'},
@@ -78,7 +78,7 @@ module.exports = function (config) {
      * See https://github.com/karma-runner/karma-junit-reporter#configuration
      */
     junitReporter: {
-      outputDir: 'target/surefire-reports', // results will be saved as $outputDir/$browserName.xml
+      outputDir: 'target/test-reports', // results will be saved as $outputDir/$browserName.xml
       outputFile: 'TEST-' + title + '.xml', // if included, results will be saved as $outputDir/$browserName/$outputFile
       suite: title, // suite will become the package name attribute in xml testsuite element
       useBrowserName: false // add browser name to report and classes names

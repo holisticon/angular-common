@@ -11,12 +11,8 @@ node_js:
   - "5"
   - "6"
   - "stable"
-env:
-  - DISABLE_SAUCELABS=true
-  - NPM_VERSION=2
-  - NPM_VERSION=3
 before_install:
-  - npm install -g npm@$NPM_VERSION
+  - npm install -g npm@3
 before_script:
   - npm install
   - npm run build
