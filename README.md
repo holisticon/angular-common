@@ -14,13 +14,13 @@
 ## Installation
 
 ```
-npm install @holisticon/angular-common --save
+npm install @holisticon/angular-common --save-dev
 ```
 
 Or if you want to use the development version (nightly build), which maybe not stable!:
 
 ```
-npm install @holisticon/angular-common@next --save
+npm install @holisticon/angular-common@next --save-dev
 ```
 ## Usage
 
