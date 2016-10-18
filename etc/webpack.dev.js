@@ -1,7 +1,7 @@
 /**
  * @author: hypery2k
  */
-
+const util = require('util');
 const appConfig = require(process.env.APP_CONFIG || './appConfig');
 const helpers = require('./helpers');
 const webpackMerge = require('webpack-merge'); // used to merge webpack configs

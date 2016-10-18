@@ -2,6 +2,7 @@
  * @author: hypery2k
  */
 
+const util = require('util');
 const appConfig = require(process.env.APP_CONFIG || './appConfig');
 const helpers = require('./helpers');
 
