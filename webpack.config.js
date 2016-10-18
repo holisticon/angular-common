@@ -1,5 +1,5 @@
 /**
- * @author: @martinreinhardt
+ * @author: hypery2k
  */
 
 // Look in ./config folder for webpack.dev.js

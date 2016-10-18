@@ -1,5 +1,5 @@
 /**
- * @author: @martinreinhardt
+ * @author: hypery2k
  */
 
 const appConfig = require(process.env.APP_CONFIG || './appConfig');
@@ -11,6 +11,7 @@ const commonConfig = require('./webpack.common.js'); // the settings that are co
  * Webpack Plugins
  */
 const DefinePlugin = require('webpack/lib/DefinePlugin');
+const VisualizerPlugin = require('webpack-visualizer-plugin');
 
 /**
  * Webpack Constants
@@ -91,7 +92,7 @@ module.exports = webpackMerge(commonConfig, {
     chunkFilename: '[id].chunk.js',
 
     library: 'ac_[name]',
-    libraryTarget: 'var',
+    libraryTarget: 'var'
   },
 
   plugins: [
@@ -115,6 +116,10 @@ module.exports = webpackMerge(commonConfig, {
         'HMR': METADATA.HMR,
       }
     }),
+    // see https://github.com/chrisbateman/webpack-visualizer#plugin-usage
+    new VisualizerPlugin({
+      filename: './statistics.html'
+    })
   ],
 
   /**

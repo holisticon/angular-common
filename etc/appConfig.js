@@ -24,7 +24,8 @@ var appConfig = {
   srcIMG: path.resolve(sourceRoot, 'img'),
   index: path.resolve(sourceRoot, 'index.html'),
   dist: distRoot,
-  distPath: distPath
+  distPath: distPath,
+  additionalWebpackOptions: false
 };
 
 module.exports = appConfig;

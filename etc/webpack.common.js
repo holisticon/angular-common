@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const helpers = require('./helpers');
 const appConfig = require(process.env.APP_CONFIG || './appConfig');
+const debugLog = util.debuglog('@holisticon/angular-common/webpack.common');
 
 /*
  * Webpack Plugins
@@ -12,6 +13,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 const HtmlElementsPlugin = require('./html-elements-plugin');
 
+debugLog('Using following appConfig:', appConfig);
 /*
  * Webpack Constants
  */
@@ -26,7 +28,7 @@ const METADATA = {
  *
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
-module.exports = {
+var config = {
 
   /*
    * Static metadata for index.html
@@ -289,3 +291,11 @@ module.exports = {
   }
 
 };
+
+
+// add additional settings here
+if (appConfig.additionalWebpackOptions) {
+  config = webpackMerge(config, appConfig.additionalWebpackOptions);
+}
+debugLog('Using following webpack common config:', config);
+module.exports = config;

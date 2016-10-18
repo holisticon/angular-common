@@ -1,5 +1,5 @@
 /**
- * @author: @martinreinhardt
+ * @author: hypery2k
  */
 const baseConfig = require('./karma.conf.js');
 const defaultAppConfig = require('./appConfig');

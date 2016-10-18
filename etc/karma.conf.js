@@ -1,5 +1,5 @@
 /**
- * @author: @martinreinhardt
+ * @author: hypery2k
  */
 const defaultAppConfig = require('./appConfig');
 const appConfig = require(process.env.APP_CONFIG || './appConfig');
