@@ -1,0 +1,23 @@
+{
+  "tags": {
+    "allowUnknownTags": true,
+    "dictionaries": [
+      "jsdoc",
+      "closure"
+    ]
+  },
+  "source": {
+    "includePattern": ".+\\.js(doc|x)?$",
+    "excludePattern": "(^|\\/|\\\\)_"
+  },
+  "opts": {
+    "destination": "./target/docs"
+  },
+  "plugins": [],
+  "templates": {
+    "footer": "",
+    "copyright": "2016 Holisticon AG",
+    "cleverLinks": false,
+    "monospaceLinks": false
+  }
+}

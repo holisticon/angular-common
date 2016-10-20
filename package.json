@@ -7,10 +7,11 @@
     "watch": "cross-env NODE_ENV=development webpack-dev-server --inline --colors --progress --display-error-details --display-cached --port 3000 ",
     "build": "npm run tslint && npm run tsc && cross-env NODE_ENV=production webpack",
     "lite": "lite-server",
-    "test": "cross-env NODE_ENV=test karma start karma.conf.ci.js",
+    "test": "cross-env NODE_ENV=test jasmine-node test/*.spec.js --junitreport --output target/test-reports/ && karma start karma.conf.ci.js",
     "watch-test": "cross-env NODE_ENV=test karma start",
     "tslint": "tslint \"test/**/*.ts\"",
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "jsdoc": "jsdoc -c ./jsdoc.json -t ./node_modules/ink-docstrap/template -R README.md ./etc"
   },
   "dependencies": {
     "@types/core-js": "0.9.34",
@@ -92,6 +93,9 @@
     "@angular/router": "3.0.2",
     "@angular/upgrade": "2.0.2",
     "angular2-in-memory-web-api": "0.0.21",
+    "ink-docstrap": "1.3.0",
+    "jasmine-node": "1.14.5",
+    "jsdoc": "3.4.2",
     "rxjs": "5.0.0-beta.12",
     "zone.js": "0.6.25"
   },
