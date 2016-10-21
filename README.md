@@ -26,6 +26,7 @@ npm install @holisticon/angular-common@next --save-dev
 
 ### Basic Usage
 * Create an config path, e.g. etc/appConfig.js:
+
 ```javascript
 var path = require("path");
 // resolve paths

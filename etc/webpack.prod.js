@@ -2,8 +2,9 @@
  * @author: hypery2k
  */
 const util = require('util');
-const appConfig = require(process.env.APP_CONFIG || './appConfig');
 const helpers = require('./helpers');
+const appConfig = helpers.getAppConfig();
+const webpack = require('webpack');
 const webpackMerge = require('webpack-merge'); // used to merge webpack configs
 const commonConfig = require('./webpack.common.js'); // the settings that are common to prod and dev
 
@@ -11,12 +12,12 @@ const commonConfig = require('./webpack.common.js'); // the settings that are co
  * Webpack Plugins
  */
 const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
-const ProvidePlugin = require('webpack/lib/ProvidePlugin');
-const DefinePlugin = require('webpack/lib/DefinePlugin');
-const NormalModuleReplacementPlugin = require('webpack/lib/NormalModuleReplacementPlugin');
-const IgnorePlugin = require('webpack/lib/IgnorePlugin');
-const DedupePlugin = require('webpack/lib/optimize/DedupePlugin');
-const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
+const ProvidePlugin = webpack.ProvidePlugin;
+const DefinePlugin = webpack.DefinePlugin;
+const NormalModuleReplacementPlugin = webpack.NormalModuleReplacementPlugin;
+const IgnorePlugin = webpack.IgnorePlugin;
+const DedupePlugin = webpack.optimize.DedupePlugin;
+const UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 const WebpackMd5Hash = require('webpack-md5-hash');
 
 /**
@@ -88,6 +89,15 @@ module.exports = webpackMerge(commonConfig, {
    */
   plugins: [
 
+    /*
+     * Plugin: CommonsChunkPlugin
+     * Description: Shares common code between the pages.
+     * It identifies common modules and put them into a commons chunk.
+     *
+     * See: https://webpack.github.io/docs/list-of-plugins.html#commonschunkplugin
+     * See: https://github.com/webpack/docs/wiki/optimization#multi-page-app
+     */
+    new webpack.optimize.CommonsChunkPlugin(appConfig.chunks),
 
     /*
      * Plugin: ForkCheckerPlugin

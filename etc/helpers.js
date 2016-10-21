@@ -1,7 +1,11 @@
-var path = require('path');
+const path = require('path');
+const util = require('util');
+const debugLog = util.debuglog('@holisticon/angular-common/helpers');
+const defaultAppConfig = require('./appConfig');
+const providedAppConfig = require(process.env.APP_CONFIG || './appConfig');
 
 // Helper functions
-var ROOT = path.resolve(__dirname, '..');
+const ROOT = path.resolve(__dirname, '..');
 
 function hasProcessFlag(flag) {
   return process.argv.join('').indexOf(flag) > -1;
@@ -24,6 +28,111 @@ function checkNodeImport(context, request, cb) {
   cb();
 }
 
+/**
+ * Takes the default config and merge it with the provided overwrites
+ * @param overwrittenConfig with overwrites
+ * @returns config object
+ * @example
+ { src: '/my-sample-project/test/app',
+  test: '/my-sample-project/test/specs',
+  templates: '/my-sample-project/scripts/templates',
+  srcPath: 'test/app',
+  testPath: 'test/specs',
+  testSpecs: 'test/specs/**\/*.spec.ts',
+testBundlePath: '/my-sample-project/etc/spec-bundle.js',
+  testTitle: 'Holisticon - AngularBuildCommon',
+  srcApp: '/my-sample-project/test/app',
+  srcSASS: '/my-sample-project/test/app/scss',
+  srcI18N: '/my-sample-project/test/app/app/i18n',
+  srcIMG: '/my-sample-project/test/app/img',
+  index: '/my-sample-project/test/app/index.html',
+  dist: '/my-sample-project/dist',
+  distPath: 'dist',
+  additionalWebpackOptions: false }
+
+ */
+function mergeAppConfig(overwrittenConfig) { /*eslint complexity: [error, 22]*/
+  var appConfig = overwrittenConfig || {},
+    basePath = path.resolve(process.cwd()),
+    appName = appConfig.appName || defaultAppConfig.appName,
+    entry,
+    junit,
+    srcPath = appConfig.srcPath || defaultAppConfig.srcPath,
+    testPath = appConfig.testPath || defaultAppConfig.testPath,
+    sourceResolved = path.resolve(basePath, srcPath),
+    testPathResolved = path.resolve(basePath, testPath),
+    templatesPath = appConfig.templatesPath || defaultAppConfig.templatesPath,
+    distPath = appConfig.distPath || defaultAppConfig.distPath,
+    genPath = appConfig.genPath || defaultAppConfig.genPath,
+    templatesResolved = path.resolve(basePath, templatesPath);
+  var indexFiles = defaultAppConfig.indexFiles;
+  if (appConfig.entry) {
+    entry = appConfig.entry;
+  } else {
+    entry = {
+      'polyfills': sourceResolved + '/polyfills.browser.ts',
+      'main': sourceResolved + '/main.browser.ts'
+    }
+  }
+  if (appConfig.junit) {
+    junit = {
+      outputDir: path.resolve(basePath, appConfig.junit.dir), // results will be saved as $outputDir/$browserName.xml
+      outputFile: 'TESTS-' + appConfig.junit.name + '.xml', // if included, results will be saved as $outputDir/$browserName/$outputFile
+      suite: appConfig.junit.name, // suite will become the package name attribute in xml testsuite element
+      useBrowserName: false // add browser name to report and classes names
+    }
+  } else {
+    junit = {
+      outputDir: path.resolve(basePath, 'dist', 'test-reports'), // results will be saved as $outputDir/$browserName.xml
+      outputFile: 'TESTS-' + defaultAppConfig.junit.name + '.xml', // if included, results will be saved as $outputDir/$browserName/$outputFile
+      suite: defaultAppConfig.junit.name, // suite will become the package name attribute in xml testsuite element
+      useBrowserName: false // add browser name to report and classes names
+    }
+  }
+  if (appConfig.indexFiles) {
+    indexFiles = appConfig.indexFiles;
+  } else {
+    // refresh with current source path
+    indexFiles[0].template = path.resolve(srcPath, 'index.html');
+  }
+  var config = {
+    srcPath: srcPath,
+    testPath: testPath,
+    src: sourceResolved,
+    test: testPathResolved,
+    templates: templatesResolved || srcPath + '/' + templatesPath,
+    templatesPath: templatesPath,
+    srcSASS: appConfig.srcSASS || path.resolve(sourceResolved, 'scss'),
+    srcI18N: appConfig.srcI18N || path.resolve(sourceResolved, 'app', 'i18n'),
+    srcIMG: appConfig.srcIMG || path.resolve(sourceResolved, 'img'),
+    modulesPath: appConfig.modulesPath || path.resolve(basePath, 'node_modules'),
+    testSpecs: appConfig.testSpecs || testPathResolved + defaultAppConfig.specs,
+    distPath: distPath,
+    dist: appConfig.dist || path.resolve(distPath),
+    genPath: genPath,
+    junit: junit,
+    indexFiles: indexFiles,
+    gen: appConfig.gen || path.resolve(genPath),
+    chunks: appConfig.chunks || defaultAppConfig.chunks,
+    globals: appConfig.globals || defaultAppConfig.globals,
+    entry: entry,
+    mangle: appConfig.mangle || defaultAppConfig.mangle,
+    proxy: appConfig.proxy || defaultAppConfig.proxy,
+    title: appConfig.title || defaultAppConfig.title
+  };
+  debugLog('Using following appConfig:', config);
+  return config;
+}
+
+/**
+ * Use the provided (as process.env var) config file and merge it with the default
+ */
+function getAppConfig() {
+  return mergeAppConfig(providedAppConfig);
+}
+
+exports.mergeAppConfig = mergeAppConfig;
+exports.getAppConfig = getAppConfig;
 exports.hasProcessFlag = hasProcessFlag;
 exports.isWebpackDevServer = isWebpackDevServer;
 exports.root = root;

@@ -1,19 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit} from "@angular/core";
 
 @Component({
   selector: 'app',
   providers: [],
   template: `
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>App</title>
-  </head>
-  <body>
-  
-  </body>
-</html>
+<!-- Main component -->
+<main>
+</main>
 `
 })
 export class App implements OnInit {

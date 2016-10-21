@@ -2,8 +2,11 @@
  * @author: hypery2k
  */
 const util = require('util');
-const appConfig = require(process.env.APP_CONFIG || './appConfig');
 const helpers = require('./helpers');
+const appConfig = helpers.getAppConfig();
+const debugLog = util.debuglog('@holisticon/angular-common/webpack.dev');
+
+// WEBPACK
 const webpackMerge = require('webpack-merge'); // used to merge webpack configs
 const commonConfig = require('./webpack.common.js'); // the settings that are common to prod and dev
 

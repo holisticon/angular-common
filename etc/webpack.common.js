@@ -1,9 +1,10 @@
-const webpack = require('webpack');
 const util = require('util');
 const path = require('path');
 const helpers = require('./helpers');
-const appConfig = require(process.env.APP_CONFIG || './appConfig');
+const appConfig = helpers.getAppConfig();
 const debugLog = util.debuglog('@holisticon/angular-common/webpack.common');
+// WEBPACK
+const webpack = require('webpack');
 
 /*
  * Webpack Plugins
@@ -12,7 +13,6 @@ const TsConfigPathsPlugin = require('awesome-typescript-loader').TsConfigPathsPl
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
-const HtmlElementsPlugin = require('./html-elements-plugin');
 
 debugLog('Using following appConfig:', appConfig);
 /*
@@ -44,11 +44,7 @@ var config = {
    *
    * See: http://webpack.github.io/docs/configuration.html#entry
    */
-  entry: {
-    'polyfills': appConfig.src + '/polyfills.browser.ts',
-    'main': appConfig.src + '/main.browser.ts'
-
-  },
+  entry: appConfig.entry,
 
   /*
    * Options affecting the resolving of modules.
@@ -181,7 +177,8 @@ var config = {
        */
       {
         test: /\.css$/,
-        loaders: ['to-string-loader', 'css-loader']
+        loaders: ['to-string-loader', 'css-loader'],
+        exclude: ['**/*.html','**/*.scss']
       },
 
       /* Raw loader support for *.html
@@ -231,18 +228,6 @@ var config = {
     new webpack.optimize.OccurrenceOrderPlugin(true),
 
     /*
-     * Plugin: CommonsChunkPlugin
-     * Description: Shares common code between the pages.
-     * It identifies common modules and put them into a commons chunk.
-     *
-     * See: https://webpack.github.io/docs/list-of-plugins.html#commonschunkplugin
-     * See: https://github.com/webpack/docs/wiki/optimization#multi-page-app
-     */
-    new webpack.optimize.CommonsChunkPlugin({
-      name: ['polyfills', 'vendor'].reverse()
-    }),
-
-    /*
      * Plugin: CopyWebpackPlugin
      * Description: Copy files and directories in webpack.
      *
@@ -257,20 +242,6 @@ var config = {
       from: appConfig.srcI18N,
       to: 'i18n'
     }]),
-
-    /*
-     * Plugin: HtmlWebpackPlugin
-     * Description: Simplifies creation of HTML files to serve your webpack bundles.
-     * This is especially useful for webpack bundles that include a hash in the filename
-     * which changes every compilation.
-     *
-     * See: https://github.com/ampedandwired/html-webpack-plugin
-     */
-    new HtmlWebpackPlugin({
-      chunks: ['main', 'polyfills', 'vendor'],
-      template: appConfig.index,
-      chunksSortMode: 'dependency'
-    }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     })
@@ -293,6 +264,18 @@ var config = {
 
 };
 
+/*
+ * Plugin: HtmlWebpackPlugin
+ * Description: Simplifies creation of HTML files to serve your webpack bundles.
+ * This is especially useful for webpack bundles that include a hash in the filename
+ * which changes every compilation.
+ *
+ * See: https://github.com/ampedandwired/html-webpack-plugin
+ */
+for (var indexConfig of appConfig.indexFiles) {
+  console.log('=>'+JSON.stringify(indexConfig))
+  config.plugins.push(new HtmlWebpackPlugin(indexConfig));
+}
 
 // add additional settings here
 if (appConfig.additionalWebpackOptions) {

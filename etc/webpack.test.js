@@ -3,14 +3,18 @@
  */
 
 const util = require('util');
-const appConfig = require(process.env.APP_CONFIG || './appConfig');
 const helpers = require('./helpers');
+const appConfig = helpers.getAppConfig();
+
+// WEBPACK
+const webpack = require('webpack');
 
 /**
  * Webpack Plugins
  */
-const ProvidePlugin = require('webpack/lib/ProvidePlugin');
-const DefinePlugin = require('webpack/lib/DefinePlugin');
+const webpackMerge = require('webpack-merge'); // used to merge webpack configs
+const ProvidePlugin = webpack.ProvidePlugin;
+const DefinePlugin = webpack.DefinePlugin;
 
 /**
  * Webpack Constants
@@ -117,30 +121,7 @@ module.exports = {
         test: /\.ts$/,
         loaders: ['babel-loader', 'awesome-typescript-loader', 'angular2-template-loader'],
         exclude: [/\.e2e\.ts$/]
-      },
-
-      /**
-       * Json loader support for *.json files.
-       *
-       * See: https://github.com/webpack/json-loader
-       */
-      {test: /\.json$/, loader: 'json-loader', exclude: [appConfig.index]},
-
-      /**
-       * Raw loader support for *.css files
-       * Returns file content as string
-       *
-       * See: https://github.com/webpack/raw-loader
-       */
-      {test: /\.css$/, loaders: ['to-string-loader', 'css-loader'], exclude: [appConfig.index]},
-
-      /**
-       * Raw loader support for *.html
-       * Returns file content as string
-       *
-       * See: https://github.com/webpack/raw-loader
-       */
-      {test: /\.html$/, loader: 'raw-loader', exclude: [appConfig.index]}
+      }
 
     ],
 
@@ -199,7 +180,7 @@ module.exports = {
         'HMR': false
       },
       'APP_CONFIG': JSON.stringify(appConfig)
-    }),
+    })
 
   ]
 

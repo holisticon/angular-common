@@ -4,6 +4,7 @@ dist/
 node_modules/
 typings/
 test/app/*.js*
+test/target/
 test/specs/*.js*
 target/
 *.log

@@ -1,13 +1,14 @@
 {
   "name": "@holisticon/angular-common",
-  "version": "0.1.2-dev",
+  "version": "0.2.0",
   "description": "Common angular build module for Angular 2",
   "scripts": {
     "webpack": "webpack",
     "watch": "cross-env NODE_ENV=development webpack-dev-server --inline --colors --progress --display-error-details --display-cached --port 3000 ",
     "build": "npm run tslint && npm run tsc && cross-env NODE_ENV=production webpack",
     "lite": "lite-server",
-    "test": "cross-env NODE_ENV=test jasmine-node test/*.spec.js --junitreport --output target/test-reports/ && karma start karma.conf.ci.js",
+    "test": "cross-env NODE_ENV=test jasmine-node test/*.spec.js --junitreport --output target/test-reports/",
+    "e2e": "cd test && npm i && cd .. && karma start test/karma.conf.ci.js",
     "watch-test": "cross-env NODE_ENV=test karma start",
     "tslint": "tslint \"test/**/*.ts\"",
     "tsc": "tsc",
