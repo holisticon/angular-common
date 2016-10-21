@@ -10,7 +10,7 @@
     "test": "cross-env NODE_ENV=test jasmine-node test/*.spec.js --junitreport --output target/test-reports/",
     "e2e": "cd test && npm i && cd .. && karma start test/karma.conf.ci.js",
     "watch-test": "cross-env NODE_ENV=test karma start",
-    "tslint": "tslint \"test/**/*.ts\"",
+    "tslint": "tslint \"test/**/*.ts\" --exclude \"test/node_modules/**/*\"",
     "tsc": "tsc",
     "jsdoc": "jsdoc -c ./jsdoc.json -t ./node_modules/ink-docstrap/template -R README.md ./etc"
   },

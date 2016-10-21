@@ -273,7 +273,6 @@ var config = {
  * See: https://github.com/ampedandwired/html-webpack-plugin
  */
 for (var indexConfig of appConfig.indexFiles) {
-  console.log('=>'+JSON.stringify(indexConfig))
   config.plugins.push(new HtmlWebpackPlugin(indexConfig));
 }
 

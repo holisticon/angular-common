@@ -34,6 +34,7 @@
     "node",
     "node_modules",
     "dist",
-    "target"
+    "target",
+    "test/node_modules"
   ]
 }

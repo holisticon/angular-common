@@ -122,5 +122,4 @@ module.exports = function (config) {
   config.preprocessors[specs] = ['webpack', 'sourcemap'];
 
   debugLog('Using following karma config:', config);
-  console.log(config)
 };
