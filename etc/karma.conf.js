@@ -8,7 +8,7 @@ const appConfig = helpers.getAppConfig();
 const webpackConfig = require('./webpack.test.js');
 webpackConfig.entry = {};
 
-const title = appConfig.testTitle || 'Holisticon';
+const junit = appConfig.junit;
 const bundle = appConfig.testBundle;
 const specs = appConfig.testSpecs;
 
@@ -86,12 +86,7 @@ module.exports = function (config) {
     /**
      * See https://github.com/karma-runner/karma-junit-reporter#configuration
      */
-    junitReporter: {
-      outputDir: 'target/test-reports', // results will be saved as $outputDir/$browserName.xml
-      outputFile: 'TESTS-' + title + '.xml', // if included, results will be saved as $outputDir/$browserName/$outputFile
-      suite: title, // suite will become the package name attribute in xml testsuite element
-      useBrowserName: false // add browser name to report and classes names
-    },
+    junitReporter: junit,
 
     // web server port
     port: 9876,

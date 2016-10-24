@@ -28,31 +28,20 @@ npm install @holisticon/angular-common@next --save-dev
 * Create an config path, e.g. etc/appConfig.js:
 
 ```javascript
-var path = require("path");
-// resolve paths
-var sourceRoot = path.resolve(__dirname, '..', 'src', 'main', 'frontend'),
-  testRoot = path.resolve(__dirname, '..', 'src', 'test', 'frontend'),
-  distRoot = path.resolve(__dirname, '..', 'src', 'main', 'resources', 'static');
-// overwrite defaults
 var appConfig = {
   srcPath: 'src/main/frontend',
   testPath: 'src/test/frontend',
-  entry: {
-    app: sourceRoot + '/scripts/app.js',
-    salesboard: sourceRoot + '/scripts/app.salesboard.js',
-    assignment: sourceRoot + '/scripts/app.assignment.js'
+  junit: {
+    name: 'My-TestApp',
+    dir: 'target/surefire-reports'
   },
-  srcApp: path.resolve(sourceRoot, 'app'),
-  testApp: path.resolve(testRoot, 'specs'),
-  srcSASS: path.resolve(sourceRoot, 'scss'),
-  srcI18N: path.resolve(sourceRoot, 'app', 'i18n'),
-  srcIMG: path.resolve(sourceRoot, 'img'),
-  dist: distRoot
 };
+
 module.exports = appConfig;
 
 ```
-And provide a dummy files for
+
+And provide dummy files for
 * karma.conf.js:
 ```javascript
 process.env['APP_CONFIG'] = require("path").resolve(__dirname, 'etc', 'appConfig.js');
@@ -83,4 +72,47 @@ module.exports = require('@holisticon/angular-common').webpack;
 
 ### Advanced Usage
 
-TODO multi-app
+#### Multiple Entries
+
+```javascript
+var path = require("path"),
+  srcPath = 'src/main/frontend',
+  testPath = 'src/test/frontend',
+  sourceRoot = path.resolve(__dirname, '..', srcPath);
+
+var appConfig = {
+  srcPath: srcPath,
+  testPath: testPath,
+  entry: {
+    'polyfills': sourceRoot + '/polyfills.browser.ts',
+    'app': sourceRoot + '/main.browser.ts',
+    'app2': sourceRoot + '/customer.browser.ts'
+  },
+  ...
+};
+
+module.exports = appConfig;
+
+```
+
+
+
+#### Add additional webpack options:
+
+Add entries to the property *additionalWebpackOptions*:
+```javascript
+...
+  additionalWebpackOptions: {
+    plugins {
+      /* show only de and en locale */
+      new webpack.NormalModuleReplacementPlugin(
+        /moment[\/\\]locale$/,
+        /de|en/
+      )
+    }
+  }
+};
+module.exports = appConfig;
+
+```
+
