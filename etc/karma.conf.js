@@ -9,7 +9,10 @@ const webpackConfig = require('./webpack.test.js');
 webpackConfig.entry = {};
 
 const title = appConfig.testTitle || 'Holisticon';
+const bundle = appConfig.testBundle;
 const specs = appConfig.testSpecs;
+
+debugLog('Using following app config in karma:', appConfig);
 
 module.exports = function (config) {
 
@@ -34,7 +37,9 @@ module.exports = function (config) {
      * we are building the test environment in ./spec-bundle.js
      */
     files: [
-      'node_modules/babel-polyfill/dist/polyfill.js'
+      'node_modules/babel-polyfill/dist/polyfill.js',
+      {pattern: bundle, watched: false},
+      specs
     ],
 
     /*
@@ -42,9 +47,16 @@ module.exports = function (config) {
      * available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
      */
     preprocessors: {
+      [bundle]: ['webpack', 'sourcemap'],
+      [specs]: ['coverage', 'webpack', 'sourcemap']
     },
 
     webpack: webpackConfig,
+
+    // Set globally available variables
+    globals: {
+      'APP_CONFIG': JSON.stringify(appConfig)
+    },
 
     coverageReporter: {
       dir: 'target/coverage-reports/',
@@ -111,15 +123,6 @@ module.exports = function (config) {
      */
     singleRun: false
   });
-
-  for (var key in appConfig.entry) {
-    if (key) {
-      config.files.push(appConfig.entry[key]);
-      config.preprocessors[appConfig.entry[key]] = ['webpack', 'sourcemap'];
-    }
-  }
-  config.files.push({pattern: specs, watched: false});
-  config.preprocessors[specs] = ['webpack', 'sourcemap'];
 
   debugLog('Using following karma config:', config);
 };

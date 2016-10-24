@@ -18,6 +18,7 @@ debugLog('Using following appConfig:', appConfig);
 /*
  * Webpack Constants
  */
+const ENV = process.env.ENV || process.env.NODE_ENV || 'test';
 const METADATA = {
   title: 'Holisticon',
   baseUrl: '/',
@@ -37,6 +38,7 @@ var config = {
    * See: (custom attribute)
    */
   metadata: METADATA,
+
 
   /*
    * The entry point for the bundle
@@ -105,7 +107,14 @@ var config = {
        *
        * See: https://github.com/wbuchwalter/tslint-loader
        */
-      // { test: /\.ts$/, loader: 'tslint-loader', exclude: [ helpers.root('node_modules') ] },
+      {
+        test: /\.ts$/,
+        loader: 'tslint-loader',
+        exclude: [
+          /node_modules/,
+          /\.(html|css|sass)$/
+        ]
+      },
 
       /*
        * Source map loader support for *.js files
@@ -149,8 +158,7 @@ var config = {
       // note that babel-loader is configured to run after ts-loader
       {
         test: /\.ts$/,
-        loaders: ['awesome-typescript-loader', 'angular2-template-loader'],
-        exclude: [/\.(spec|e2e)\.ts$/]
+        loaders: ['awesome-typescript-loader', 'angular2-template-loader']
       },
       /*
        * Json loader support for *.json files.
@@ -178,7 +186,7 @@ var config = {
       {
         test: /\.css$/,
         loaders: ['to-string-loader', 'css-loader'],
-        exclude: ['**/*.html','**/*.scss']
+        exclude: [/\.(html|css)$/]
       },
 
       /* Raw loader support for *.html
@@ -187,12 +195,15 @@ var config = {
        * See: https://github.com/webpack/raw-loader
        */
       {
-        test: /\.html$/,
+        test: /\.(html|xml|json)$/,
         loader: 'raw-loader'
       }
 
     ]
 
+  },
+  sassLoader: {
+    includePaths: [appConfig.srcSASS]
   },
 
   /*
@@ -242,10 +253,25 @@ var config = {
       from: appConfig.srcI18N,
       to: 'i18n'
     }]),
+    /**
+     * Plugin: DefinePlugin
+     * Description: Define free variables.
+     * Useful for having development builds with debug logging or adding global constants.
+     *
+     * Environment helpers
+     *
+     * See: https://webpack.github.io/docs/list-of-plugins.html#defineplugin
+     */
+    // NOTE: when adding more properties make sure you include them in custom-typings.d.ts
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+      'ENV': JSON.stringify(ENV),
+      'HMR': false,
+      'process.env': {
+        'ENV': JSON.stringify(ENV),
+        'NODE_ENV': JSON.stringify(ENV),
+        'HMR': false
+      }
     })
-
   ],
 
   /*

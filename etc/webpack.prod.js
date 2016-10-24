@@ -173,6 +173,17 @@ module.exports = webpackMerge(commonConfig, {
       compress: {screw_ie8: true}, //prod
       comments: false //prod
     }),
+    // enforce linting on prod build
+    new webpack.LoaderOptionsPlugin({
+      test: /\.ts/i,
+      options: {
+        tslint: {
+          enforce: 'pre',
+          emitErrors: true,
+          failOnHint: true
+        }
+      }
+    }),
 
     /**
      * Plugin: NormalModuleReplacementPlugin

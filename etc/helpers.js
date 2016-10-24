@@ -96,10 +96,12 @@ function mergeAppConfig(overwrittenConfig) { /*eslint complexity: [error, 22]*/
     indexFiles[0].template = path.resolve(srcPath, 'index.html');
   }
   var config = {
+    basePath: basePath,
     srcPath: srcPath,
     testPath: testPath,
     src: sourceResolved,
     test: testPathResolved,
+    testBundle: defaultAppConfig.testBundle,
     templates: templatesResolved || srcPath + '/' + templatesPath,
     templatesPath: templatesPath,
     srcSASS: appConfig.srcSASS || path.resolve(sourceResolved, 'scss'),

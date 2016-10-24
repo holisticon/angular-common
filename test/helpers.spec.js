@@ -18,6 +18,7 @@ describe('getAppConfig', () => {
   it('should read appConfig', () => {
     var appConfig = getAppConfig();
     expect(appConfig).toBeDefined();
+    expect(appConfig.testBundle).toBeDefined();
   });
 
 });
