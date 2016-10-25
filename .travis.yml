@@ -11,6 +11,7 @@ node_js:
   - "stable"
 env:
   - NPM_VERSION=3
+  - NPM_VERSION=4
 before_install:
   - npm install -g npm@$NPM_VERSION
 before_script:
