@@ -13,6 +13,7 @@ const TsConfigPathsPlugin = require('awesome-typescript-loader').TsConfigPathsPl
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
+const WebpackNotifierPlugin = require('webpack-notifier');
 
 debugLog('Using following appConfig:', appConfig);
 /*
