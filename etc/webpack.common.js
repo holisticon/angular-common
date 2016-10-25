@@ -85,6 +85,9 @@ var config = {
    * See: http://webpack.github.io/docs/configuration.html#module
    */
   module: {
+    
+    // resolve https://github.com/holisticon/angular-common/issues/10
+    exprContextCritical: false,
 
     /*
      * An array of applied pre and post loaders.
