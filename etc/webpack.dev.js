@@ -15,6 +15,7 @@ const commonConfig = require('./webpack.common.js'); // the settings that are co
  */
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const VisualizerPlugin = require('webpack-visualizer-plugin');
+const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 
 /**
  * Webpack Constants
@@ -122,7 +123,13 @@ module.exports = webpackMerge(commonConfig, {
     // see https://github.com/chrisbateman/webpack-visualizer#plugin-usage
     new VisualizerPlugin({
       filename: './statistics.html'
-    })
+    }),
+    /**
+     * Plugin: Open Browser Webpack Plugin
+     * 
+     * See: https://github.com/baldore/open-browser-webpack-plugin#usage
+     */
+    new OpenBrowserPlugin({ url: 'http://localhost:3000' })
   ],
 
   /**
