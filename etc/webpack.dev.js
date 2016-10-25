@@ -56,7 +56,7 @@ module.exports = webpackMerge(commonConfig, {
    * See: http://webpack.github.io/docs/configuration.html#devtool
    * See: https://github.com/webpack/docs/wiki/build-performance#sourcemaps
    */
-  devtool: 'eval-source-map',
+  devtool: '#eval',
 
   /**
    * Options affecting the output of the compilation.
@@ -70,7 +70,7 @@ module.exports = webpackMerge(commonConfig, {
      *
      * See: http://webpack.github.io/docs/configuration.html#output-path
      */
-    path: helpers.root('dist'),
+    path: appConfig.distPath,
 
     /**
      * Specifies the name of each output file on disk.
@@ -126,10 +126,10 @@ module.exports = webpackMerge(commonConfig, {
     }),
     /**
      * Plugin: Open Browser Webpack Plugin
-     * 
+     *
      * See: https://github.com/baldore/open-browser-webpack-plugin#usage
      */
-    new OpenBrowserPlugin({ url: 'http://localhost:3000' })
+    new OpenBrowserPlugin({url: 'http://localhost:3000'})
   ],
 
   /**
