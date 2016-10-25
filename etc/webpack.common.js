@@ -271,7 +271,12 @@ var config = {
         'NODE_ENV': JSON.stringify(ENV),
         'HMR': false
       }
-    })
+    }),
+    /**
+     * Plugin: NotifierPlugin
+     * See: https://github.com/Turbo87/webpack-notifier#usage
+     */
+    new WebpackNotifierPlugin()
   ],
 
   /*

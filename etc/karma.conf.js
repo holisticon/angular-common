@@ -8,11 +8,9 @@ const appConfig = helpers.getAppConfig();
 const webpackConfig = require('./webpack.test.js');
 webpackConfig.entry = {};
 
-const junit = appConfig.junit;
-const bundle = appConfig.testBundle;
+const title = appConfig.testTitle || 'Holisticon';
 const specs = appConfig.testSpecs;
-
-debugLog('Using following app config in karma:', appConfig);
+const bundle = appConfig.testBundle;
 
 module.exports = function (config) {
 
@@ -38,8 +36,7 @@ module.exports = function (config) {
      */
     files: [
       'node_modules/babel-polyfill/dist/polyfill.js',
-      {pattern: bundle, watched: false},
-      specs
+      bundle
     ],
 
     /*
@@ -47,16 +44,10 @@ module.exports = function (config) {
      * available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
      */
     preprocessors: {
-      [bundle]: ['webpack', 'sourcemap'],
-      [specs]: ['coverage', 'webpack', 'sourcemap']
+      [bundle]: ['webpack']
     },
 
     webpack: webpackConfig,
-
-    // Set globally available variables
-    globals: {
-      'APP_CONFIG': JSON.stringify(appConfig)
-    },
 
     coverageReporter: {
       dir: 'target/coverage-reports/',
@@ -86,7 +77,12 @@ module.exports = function (config) {
     /**
      * See https://github.com/karma-runner/karma-junit-reporter#configuration
      */
-    junitReporter: junit,
+    junitReporter: {
+      outputDir: 'target/test-reports', // results will be saved as $outputDir/$browserName.xml
+      outputFile: 'TESTS-' + title + '.xml', // if included, results will be saved as $outputDir/$browserName/$outputFile
+      suite: title, // suite will become the package name attribute in xml testsuite element
+      useBrowserName: false // add browser name to report and classes names
+    },
 
     // web server port
     port: 9876,
@@ -118,6 +114,15 @@ module.exports = function (config) {
      */
     singleRun: false
   });
+
+  for (var key in appConfig.entry) {
+    if (key) {
+      config.files.push(appConfig.entry[key]);
+      config.preprocessors[appConfig.entry[key]] = ['webpack', 'sourcemap'];
+    }
+  }
+  config.files.push({pattern: specs, watched: false});
+  config.preprocessors[specs] = ['webpack', 'sourcemap'];
 
   debugLog('Using following karma config:', config);
 };
