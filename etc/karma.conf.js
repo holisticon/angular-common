@@ -115,12 +115,6 @@ module.exports = function (config) {
     singleRun: false
   });
 
-  for (var key in appConfig.entry) {
-    if (key) {
-      config.files.push(appConfig.entry[key]);
-      config.preprocessors[appConfig.entry[key]] = ['webpack', 'sourcemap'];
-    }
-  }
   config.files.push({pattern: specs, watched: false});
   config.preprocessors[specs] = ['webpack', 'sourcemap'];
 
