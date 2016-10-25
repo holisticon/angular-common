@@ -1,6 +1,6 @@
 {
   "name": "@holisticon/angular-common",
-  "version": "0.3.1-dev",
+  "version": "0.3.2-dev",
   "description": "Common angular build module for Angular 2",
   "scripts": {
     "webpack": "webpack",
@@ -83,7 +83,7 @@
     "webpack-md5-hash": "0.0.5",
     "webpack-merge": "0.14.1",
     "webpack-notifier": "1.4.1",
-    "webpack-visualizer-plugin": "^0.1.5"
+    "webpack-visualizer-plugin": "0.1.5"
   },
   "devDependencies": {
     "@angular/common": "2.0.2",
