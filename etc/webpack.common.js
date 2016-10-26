@@ -275,12 +275,7 @@ var config = {
         'NODE_ENV': JSON.stringify(ENV),
         'HMR': false
       }
-    }),
-    /**
-     * Plugin: NotifierPlugin
-     * See: https://github.com/Turbo87/webpack-notifier#usage
-     */
-    new WebpackNotifierPlugin()
+    })
   ],
 
   /*
@@ -298,6 +293,16 @@ var config = {
   }
 
 };
+
+if( os.platform() !== 'win32') {
+  // FIXME, see https://github.com/holisticon/angular-common/issues/11
+  config.plugins.push(
+    /**
+     * Plugin: NotifierPlugin
+     * See: https://github.com/Turbo87/webpack-notifier#usage
+     */
+    new WebpackNotifierPlugin());
+}
 
 /*
  * Plugin: HtmlWebpackPlugin
