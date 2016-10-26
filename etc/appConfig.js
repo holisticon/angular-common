@@ -25,6 +25,9 @@ var appConfig = {
     template: path.resolve(sourceRoot, 'index.html'),
     chunksSortMode: 'dependency'
   }],
+  proxy: {
+    '*': 'http://localhost:8080', // REST service
+  },
   additionalWebpackOptions: false
 };
 
