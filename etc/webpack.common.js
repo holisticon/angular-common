@@ -1,5 +1,6 @@
 const util = require('util');
 const path = require('path');
+const os = require('os');
 const helpers = require('./helpers');
 const appConfig = helpers.getAppConfig();
 const debugLog = util.debuglog('@holisticon/angular-common/webpack.common');
