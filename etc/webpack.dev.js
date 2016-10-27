@@ -161,9 +161,7 @@ module.exports = webpackMerge(commonConfig, {
       poll: 1000
     },
     outputPath: appConfig.dist,
-    proxy: {
-      '*': 'http://localhost:8082', // REST service
-    }
+    proxy: appConfig.proxy
   },
 
   /*

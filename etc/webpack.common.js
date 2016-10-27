@@ -1,5 +1,6 @@
 const util = require('util');
 const path = require('path');
+const os = require('os');
 const helpers = require('./helpers');
 const appConfig = helpers.getAppConfig();
 const debugLog = util.debuglog('@holisticon/angular-common/webpack.common');
@@ -275,12 +276,7 @@ var config = {
         'NODE_ENV': JSON.stringify(ENV),
         'HMR': false
       }
-    }),
-    /**
-     * Plugin: NotifierPlugin
-     * See: https://github.com/Turbo87/webpack-notifier#usage
-     */
-    new WebpackNotifierPlugin()
+    })
   ],
 
   /*
@@ -298,6 +294,16 @@ var config = {
   }
 
 };
+
+if( os.platform() !== 'win32') {
+  // FIXME, see https://github.com/holisticon/angular-common/issues/11
+  config.plugins.push(
+    /**
+     * Plugin: NotifierPlugin
+     * See: https://github.com/Turbo87/webpack-notifier#usage
+     */
+    new WebpackNotifierPlugin());
+}
 
 /*
  * Plugin: HtmlWebpackPlugin
