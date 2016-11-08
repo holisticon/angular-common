@@ -77,12 +77,7 @@ module.exports = function (config) {
     /**
      * See https://github.com/karma-runner/karma-junit-reporter#configuration
      */
-    junitReporter: {
-      outputDir: JUNIT.dir, // results will be saved as $outputDir/$browserName.xml
-      outputFile: 'TEST-' + JUNIT.title + '.xml', // if included, results will be saved as $outputDir/$browserName/$outputFile
-      suite: JUNIT.title, // suite will become the package name attribute in xml testsuite element
-      useBrowserName: false // add browser name to report and classes names
-    },
+    junitReporter: JUNIT,
 
     // web server port
     port: 9876,

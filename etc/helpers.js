@@ -77,14 +77,14 @@ function mergeAppConfig(overwrittenConfig) { /*eslint complexity: [error, 22]*/
   if (appConfig.junit) {
     junit = {
       outputDir: path.resolve(basePath, appConfig.junit.dir), // results will be saved as $outputDir/$browserName.xml
-      outputFile: 'TESTS-' + appConfig.junit.name + '.xml', // if included, results will be saved as $outputDir/$browserName/$outputFile
-      suite: appConfig.junit.name, // suite will become the package name attribute in xml testsuite element
+      outputFile: 'TEST-' + appConfig.junit.title + '.xml', // if included, results will be saved as $outputDir/$browserName/$outputFile
+      suite: appConfig.junit.title, // suite will become the package name attribute in xml testsuite element
       useBrowserName: false // add browser name to report and classes names
     }
   } else {
     junit = {
       outputDir: path.resolve(basePath, 'dist', 'test-reports'), // results will be saved as $outputDir/$browserName.xml
-      outputFile: 'TESTS-' + defaultAppConfig.junit.name + '.xml', // if included, results will be saved as $outputDir/$browserName/$outputFile
+      outputFile: 'TEST-' + defaultAppConfig.junit.name + '.xml', // if included, results will be saved as $outputDir/$browserName/$outputFile
       suite: defaultAppConfig.junit.name, // suite will become the package name attribute in xml testsuite element
       useBrowserName: false // add browser name to report and classes names
     }

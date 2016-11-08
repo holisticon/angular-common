@@ -9,6 +9,7 @@
  */
 const path = require('path');
 
+require('jasmine-json');
 
 var getAppConfig = require('../etc/helpers').getAppConfig,
   mergeAppConfig = require('../etc/helpers').mergeAppConfig;
@@ -25,28 +26,41 @@ describe('getAppConfig', () => {
 
 describe('mergeAppConfig', () => {
 
+
   it('should read default appConfig', () => {
     var config = mergeAppConfig();
     expect(config).toBeDefined();
-    expect(JSON.stringify(config)).toBe(JSON.stringify(getAppConfig()));
+    var expectation = getAppConfig();
+    delete config['junit'];
+    delete expectation['junit'];
+    expect(config).toEqualJson(expectation);
   });
 
   it('should work with null config', () => {
     var config = mergeAppConfig(null);
     expect(config).toBeDefined();
-    expect(JSON.stringify(config)).toBe(JSON.stringify(getAppConfig()));
+    var expectation = getAppConfig();
+    delete config['junit'];
+    delete expectation['junit'];
+    expect(config).toEqualJson(expectation);
   });
 
   it('should work with empty config', () => {
     var config = mergeAppConfig({});
     expect(config).toBeDefined();
-    expect(JSON.stringify(config)).toBe(JSON.stringify(getAppConfig()));
+    var expectation = getAppConfig();
+    delete config['junit'];
+    delete expectation['junit'];
+    expect(config).toEqualJson(expectation);
   });
 
   it('should work with overwritten config', () => {
-    var config = mergeAppConfig({srcPath: 'src', testPath: 'tests'});
+    var config = mergeAppConfig({ srcPath: 'src', testPath: 'tests' });
     expect(config).toBeDefined();
-    expect(JSON.stringify(config)).not.toBe(JSON.stringify(getAppConfig()));
+    var expectation = getAppConfig();
+    delete config['junit'];
+    delete expectation['junit'];
+    expect(config).not.toEqualJson(expectation);
     expect(config.src).toBe(path.resolve(__dirname, '..', 'src'));
     expect(config.srcSASS).toBe(path.resolve(__dirname, '..', 'src', 'scss'));
     expect(config.srcI18N).toBe(path.resolve(__dirname, '..', 'src', 'app', 'i18n'));
