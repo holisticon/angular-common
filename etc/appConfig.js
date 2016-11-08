@@ -11,7 +11,7 @@ var appConfig = {
   specs: '/**/*.spec.ts',
   testBundle: path.resolve(__dirname, './spec-bundle.js'),
   junit: {
-    name: 'Holisticon-AngularBuildCommon',
+    title: 'AngularCommon',
     dir: 'dist/test-reports'
   },
   chunks: {
