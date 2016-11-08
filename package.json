@@ -1,6 +1,6 @@
 {
   "name": "@holisticon/angular-common",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Common angular build module for Angular 2",
   "scripts": {
     "webpack": "webpack",
