@@ -95,6 +95,22 @@ module.exports = appConfig;
 
 ```
 
+#### JUnit-Report customization
+
+```javascript
+...
+var appConfig = {
+  ...
+    junit: {
+    title: 'MyProject',
+    dir: 'dist/test-reports'
+  },
+  ...
+};
+
+module.exports = appConfig;
+
+```
 
 
 #### Add additional webpack options:
