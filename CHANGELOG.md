@@ -1,3 +1,13 @@
+<a name="1.0.0"></a>
+# [1.0.0](https://github.com/holisticon/angular-common/compare/v0.3.5...v1.0.0) (2016-11-08)
+
+
+### Bug Fixes
+
+* **karma:** correct junit report folder config ([4697664](https://github.com/holisticon/angular-common/commit/4697664)), closes [#14](https://github.com/holisticon/angular-common/issues/14)
+
+
+
 <a name="0.3.5"></a>
 ## [0.3.5](https://github.com/holisticon/angular-common/compare/v0.3.3...v0.3.5) (2016-10-27)
 
@@ -37,5 +47,6 @@
 
 <a name="0.1.0"></a>
 # 0.1.0 (2016-10-10)
+
 
 
