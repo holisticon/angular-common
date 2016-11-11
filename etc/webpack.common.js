@@ -34,6 +34,21 @@ const METADATA = {
  */
 var config = {
 
+  stats: {
+    hash: false,
+    version: false,
+    timings: false,
+    assets: false,
+    chunks: false,
+    modules: false,
+    reasons: false,
+    children: false,
+    source: false,
+    errors: true,
+    errorDetails: true,
+    warnings: false,
+    publicPath: false
+  },
   /*
    * Static metadata for index.html
    *
@@ -86,7 +101,7 @@ var config = {
    * See: http://webpack.github.io/docs/configuration.html#module
    */
   module: {
-    
+
     // resolve https://github.com/holisticon/angular-common/issues/10
     exprContextCritical: false,
 

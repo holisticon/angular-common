@@ -66,6 +66,7 @@ module.exports = function (config) {
 
     webpackMiddleware: {
       stats: {
+        chunks:false,
         colors: true
       }
     },
