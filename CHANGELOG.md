@@ -1,7 +1,23 @@
+<a name="1.0.3"></a>
+## [1.0.3](https://github.com/holisticon/angular-common/compare/v1.0.2...v1.0.3) (2016-11-11)
+
+
+### Bug Fixes
+
+* **karma:** Correct timeout issue ([65e1269](https://github.com/holisticon/angular-common/commit/65e1269)), closes [#17](https://github.com/holisticon/angular-common/issues/17)
+* **webpack:** Reduce log output ([673fc99](https://github.com/holisticon/angular-common/commit/673fc99)), closes [#19](https://github.com/holisticon/angular-common/issues/19)
+
+
+
 <a name="1.0.2"></a>
 ## [1.0.2](https://github.com/holisticon/angular-common/compare/v1.0.1...v1.0.2) (2016-11-08)
 
-* **karma:** fix title is not defined ([b31d9dc](https://github.com/holisticon/angular-common/commit/b31d9dc)), closes [#15](https://github.com/holisticon/angular-common/issues/15)
+
+### Bug Fixes
+
+* **karma:** junit report config fixed ([b9c33e6](https://github.com/holisticon/angular-common/commit/b9c33e6))
+
+
 
 <a name="1.0.1"></a>
 ## [1.0.1](https://github.com/holisticon/angular-common/compare/v1.0.0...v1.0.1) (2016-11-08)
@@ -10,6 +26,7 @@
 ### Bug Fixes
 
 * **karma:** fix title is not defined ([b31d9dc](https://github.com/holisticon/angular-common/commit/b31d9dc)), closes [#15](https://github.com/holisticon/angular-common/issues/15)
+* **other:** optimize release build ([e3cb9e6](https://github.com/holisticon/angular-common/commit/e3cb9e6))
 * **other:** optimize release build ([0fda94d](https://github.com/holisticon/angular-common/commit/0fda94d))
 
 
@@ -38,6 +55,11 @@
 
 <a name="0.3.2"></a>
 ## [0.3.2](https://github.com/holisticon/angular-common/compare/v0.3.1...v0.3.2) (2016-10-25)
+
+
+
+<a name="0.3.1"></a>
+## [0.3.1](https://github.com/holisticon/angular-common/compare/v0.3.0...v0.3.1) (2016-10-25)
 
 
 
