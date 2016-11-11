@@ -16,6 +16,9 @@ module.exports = function (config) {
 
   config.set({
 
+    // see https://github.com/karma-runner/karma-junit-reporter/issues/61
+    browserNoActivityTimeout: 30000,
+
     // base path that will be used to resolve all patterns (e.g. files, exclude)
     basePath: '',
 
