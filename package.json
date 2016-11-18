@@ -4,7 +4,7 @@
   "description": "Common angular build module for Angular 2",
   "scripts": {
     "webpack": "webpack",
-    "watch": "cross-env NODE_ENV=development webpack-dev-server --inline --colors --progress --display-error-details --display-cached --port 3000 ",
+    "watch": "cross-env NODE_ENV=development webpack-dev-server --inline  --progress  --port 3000 ",
     "build": "npm run tslint && npm run tsc && cross-env NODE_ENV=production webpack",
     "lite": "lite-server",
     "test": "cross-env NODE_ENV=test jasmine-node test/*.spec.js --junitreport --output target/test-reports/ --verbose --noStack --color",

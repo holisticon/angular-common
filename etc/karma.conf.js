@@ -47,7 +47,7 @@ module.exports = function (config) {
      * available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
      */
     preprocessors: {
-      [bundle]: ['webpack']
+      [bundle]: ['webpack', 'sourcemap']
     },
 
     webpack: webpackConfig,
@@ -66,7 +66,7 @@ module.exports = function (config) {
 
     webpackMiddleware: {
       stats: {
-        chunks:false,
+        chunks: false,
         colors: true
       }
     },
