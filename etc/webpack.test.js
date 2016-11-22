@@ -36,6 +36,7 @@ module.exports = webpackMerge(commonConfig, {
    */
   devtool: 'inline-source-map',
 
+
   /**
    * Options affecting the normal modules.
    *
@@ -80,7 +81,9 @@ module.exports = webpackMerge(commonConfig, {
   plugins: [
     new webpack.SourceMapDevToolPlugin({
       filename: null, // if no value is provided the sourcemap is inlined
-      test: /\.(ts|js)($|\?)/i // process .js and .ts files only
+      lineToLine: true,
+      module: false,
+      test: /\.(ts|map|js)($|\?)/i // process .js and .ts files only
     }),
     new webpack.LoaderOptionsPlugin({
       test: /\.ts/i,
