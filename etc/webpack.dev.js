@@ -7,6 +7,7 @@ const appConfig = helpers.getAppConfig();
 const debugLog = util.debuglog('@holisticon/angular-common/webpack.dev');
 
 // WEBPACK
+const webpack = require('webpack');
 const webpackMerge = require('webpack-merge'); // used to merge webpack configs
 const commonConfig = require('./webpack.common.js'); // the settings that are common to prod and dev
 
@@ -100,7 +101,12 @@ module.exports = webpackMerge(commonConfig, {
   },
 
   plugins: [
-
+    new webpack.SourceMapDevToolPlugin({
+      filename: null, // if no value is provided the sourcemap is inlined
+      lineToLine: true,
+      module: false,
+      test: /\.(ts|map|js)($|\?)/i // process .js and .ts files only
+    }),
     /**
      * Plugin: DefinePlugin
      * Description: Define free variables.
