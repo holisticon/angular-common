@@ -70,6 +70,17 @@ module.exports = require('@holisticon/angular-common').webpack;
   ...
 ```
 
+Configure proxy:
+```
+  proxy: {
+    '*': {
+      headers: {"Access-Control-Allow-Origin": "http://localhost:3000", "Access-Control-Allow-Credentials": "true"},
+      target: 'http://localhost:8080',
+      secure: false
+    }
+  }
+``` 
+
 ### Advanced Usage
 
 #### Multiple Entries

@@ -1,3 +1,13 @@
+<a name="1.0.9"></a>
+## [1.0.9](https://github.com/holisticon/angular-common/compare/v1.0.8...v1.0.9) (2016-11-25)
+
+
+### Bug Fixes
+
+* **webpack:** Fix sourcemapping issues ([db3ac4c](https://github.com/holisticon/angular-common/commit/db3ac4c))
+
+
+
 <a name="1.0.8"></a>
 ## [1.0.8](https://github.com/holisticon/angular-common/compare/v1.0.7...v1.0.8) (2016-11-25)
 
