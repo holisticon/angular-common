@@ -119,15 +119,14 @@ Add entries to the property *additionalWebpackOptions*:
 ```javascript
 ...
   additionalWebpackOptions: {
-    plugins {
-      /* show only de and en locale */
+    plugins: [
+      /* use only de and en locale */
       new webpack.NormalModuleReplacementPlugin(
         /moment[\/\\]locale$/,
         /de|en/
       )
-    }
-  }
-};
+    ]
+  },
 module.exports = appConfig;
 
 ```
