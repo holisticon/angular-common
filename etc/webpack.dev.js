@@ -49,7 +49,7 @@ module.exports = webpackMerge(commonConfig, {
    *
    * See: http://webpack.github.io/docs/configuration.html#debug
    */
-  debug: true,
+  // debug: true,
 
   /**
    * Developer tool to enhance debugging
@@ -57,7 +57,7 @@ module.exports = webpackMerge(commonConfig, {
    * See: http://webpack.github.io/docs/configuration.html#devtool
    * See: https://github.com/webpack/docs/wiki/build-performance#sourcemaps
    */
-  devtool: '#eval-source-map',
+  devtool: '#cheap-module-eval-source-map',
 
   /**
    * Options affecting the output of the compilation.
@@ -101,12 +101,6 @@ module.exports = webpackMerge(commonConfig, {
   },
 
   plugins: [
-    new webpack.SourceMapDevToolPlugin({
-      filename: null, // if no value is provided the sourcemap is inlined
-      lineToLine: true,
-      module: false,
-      test: /\.(ts|map|js)($|\?)/i // process .js and .ts files only
-    }),
     /**
      * Plugin: DefinePlugin
      * Description: Define free variables.
