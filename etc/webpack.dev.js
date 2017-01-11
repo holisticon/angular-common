@@ -57,7 +57,7 @@ module.exports = webpackMerge(commonConfig, {
    * See: http://webpack.github.io/docs/configuration.html#devtool
    * See: https://github.com/webpack/docs/wiki/build-performance#sourcemaps
    */
-  devtool: '#cheap-module-eval-source-map',
+  devtool: 'cheap-module-source-map',
 
   /**
    * Options affecting the output of the compilation.
@@ -65,6 +65,8 @@ module.exports = webpackMerge(commonConfig, {
    * See: http://webpack.github.io/docs/configuration.html#output
    */
   output: {
+
+    pathinfo: true,
 
     /**
      * The output directory as absolute path (required).
@@ -87,7 +89,7 @@ module.exports = webpackMerge(commonConfig, {
      *
      * See: http://webpack.github.io/docs/configuration.html#output-sourcemapfilename
      */
-    sourceMapFilename: '[name].map',
+    sourceMapFilename: '[file].map',
 
     /** The filename of non-entry chunks as relative path
      * inside the output.path directory.
@@ -129,7 +131,7 @@ module.exports = webpackMerge(commonConfig, {
      *
      * See: https://github.com/baldore/open-browser-webpack-plugin#usage
      */
-    new OpenBrowserPlugin({url: 'http://localhost:3000'})
+    new OpenBrowserPlugin({ url: 'http://localhost:3000' })
   ],
 
   /**
