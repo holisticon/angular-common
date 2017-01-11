@@ -1,0 +1,35 @@
+# appveyor file
+# http://www.appveyor.com/docs/appveyor-yml
+environment:
+    matrix:
+        - JAVA_HOME: C:\Program Files\Java\jdk1.7.0
+        - JAVA_HOME: C:\Program Files\Java\jdk1.8.0
+        # NPM
+        - NPM_VERSION: "3"
+        - NPM_VERSION: "4"
+        # node.js
+        - NODE_VERSION: "4.4"
+        - NODE_VERSION: "4.5"
+        - NODE_VERSION: "4"
+        - NODE_VERSION: "5.0"
+        - NODE_VERSION: "5"
+        - NODE_VERSION: "6"
+        - NODE_VERSION: "7"
+        - NODE_VERSION: "stable"
+
+platform:
+  - x86
+  - x64
+
+install:
+  - ps: Install-Product node $env:NODE_VERSION
+  - node --version
+  - npm --version
+  - npm install -g npm@%NPM_VERSION%
+
+build: off
+
+test_script:
+  - npm install
+  - npm run build
+  - npm run test
