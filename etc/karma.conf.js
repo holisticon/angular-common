@@ -22,6 +22,11 @@ module.exports = function (config) {
     // base path that will be used to resolve all patterns (e.g. files, exclude)
     basePath: '',
 
+    // see https://github.com/angular/angular-cli/issues/2125
+    mime: {
+      'text/x-typescript': ['ts', 'tsx']
+    },
+
     /*
      * Frameworks to use
      *
