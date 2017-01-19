@@ -22,8 +22,6 @@
     "release:patch": "npm version patch && npm run release:pre && git push origin && git push origin --tags && npm run release:post && npm publish"
   },
   "dependencies": {
-    "@angularclass/hmr": "1.2.2",
-    "@angularclass/hmr-loader": "3.0.2",
     "@types/core-js": "0.9.34",
     "@types/jasmine": "2.5.35",
     "@types/node": "4.0.29",
