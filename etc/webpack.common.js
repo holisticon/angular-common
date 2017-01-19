@@ -90,7 +90,7 @@ var config = {
     exprContextCritical: false,
 
     noParse: [
-      /angular2|zone.js/
+      /@angular|zone.js/
     ],
 
     /*
