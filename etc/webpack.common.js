@@ -10,10 +10,9 @@ const webpack = require('webpack');
 /*
  * Webpack Plugins
  */
-const TsConfigPathsPlugin = require('awesome-typescript-loader').TsConfigPathsPlugin;
+const {TsConfigPathsPlugin, CheckerPlugin} = require('awesome-typescript-loader');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 const WebpackNotifierPlugin = require('webpack-notifier');
 
 debugLog('Using following appConfig:', appConfig);
@@ -241,12 +240,12 @@ var config = {
     new TsConfigPathsPlugin(),
 
     /*
-     * Plugin: ForkCheckerPlugin
+     * Plugin: CheckerPlugin
      * Description: Do type checking in a separate process, so webpack don't need to wait.
      *
-     * See: https://github.com/s-panferov/awesome-typescript-loader#forkchecker-boolean-defaultfalse
+     * See: https://github.com/s-panferov/awesome-typescript-loader#configuration
      */
-    new ForkCheckerPlugin(),
+    new CheckerPlugin(),
 
     /*
      * Plugin: OccurenceOrderPlugin
@@ -310,7 +309,7 @@ var config = {
 
 };
 
-if( os.platform() !== 'win32') {
+if (os.platform() !== 'win32') {
   // FIXME, see https://github.com/holisticon/angular-common/issues/11
   config.plugins.push(
     /**
