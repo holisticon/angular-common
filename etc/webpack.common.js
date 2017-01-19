@@ -157,7 +157,7 @@ var config = {
       // note that babel-loader is configured to run after ts-loader
       {
         test: /\.ts$/,
-        loaders: ['awesome-typescript-loader', 'angular2-template-loader']
+        loaders: ['@angularclass/hmr-loader', 'awesome-typescript-loader']
       },
       {
         test: /\.(png|woff|woff2|eot|ttf|svg)$/,
