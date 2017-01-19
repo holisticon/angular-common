@@ -10,7 +10,8 @@ const webpack = require('webpack');
 /*
  * Webpack Plugins
  */
-const {TsConfigPathsPlugin, CheckerPlugin} = require('awesome-typescript-loader');
+const CheckerPlugin = require('awesome-typescript-loader').TsConfigPathsPlugin;
+const TsConfigPathsPlugin = require('awesome-typescript-loader').CheckerPlugin;
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackNotifierPlugin = require('webpack-notifier');
@@ -48,13 +49,6 @@ var config = {
     warnings: false,
     publicPath: false
   },
-  /*
-   * Static metadata for index.html
-   *
-   * See: (custom attribute)
-   */
-  metadata: METADATA,
-
 
   /*
    * The entry point for the bundle
@@ -76,22 +70,13 @@ var config = {
      *
      * See: http://webpack.github.io/docs/configuration.html#resolve-extensions
      */
-    extensions: ['', '.ts', '.js', '.json'],
+    extensions: ['.ts', '.js', '.json'],
 
     // Make sure root is src
-    root: appConfig.src,
-
-    // remove other default values
-    modulesDirectories: ['node_modules']
-
-  },
-
-  htmlLoader: {
-    minimize: true,
-    removeAttributeQuotes: false,
-    caseSensitive: true,
-    customAttrSurround: [[/#/, /(?:)/], [/\*/, /(?:)/], [/\[?\(?/, /(?:)/]],
-    customAttrAssign: [/\)?\]?=/]
+    modules: [
+      appConfig.src,
+      'node_modules'
+    ]
   },
 
   /*
@@ -104,12 +89,20 @@ var config = {
     // resolve https://github.com/holisticon/angular-common/issues/10
     exprContextCritical: false,
 
+    noParse: [
+      /angular2|zone.js/
+    ],
+
     /*
-     * An array of applied pre and post loaders.
+     * An array of automatically applied loaders.
      *
-     * See: http://webpack.github.io/docs/configuration.html#module-preloaders-module-postloaders
+     * IMPORTANT: The loaders here are resolved relative to the resource which they are applied to.
+     * This means they are not resolved relative to the configuration file.
+     *
+     * See: http://webpack.github.io/docs/configuration.html#module-loaders
      */
-    preLoaders: [
+    rules: [
+      // PRE-LOADERS
       {
         test: /\.ts$/,
         loader: 'string-replace-loader',
@@ -118,7 +111,8 @@ var config = {
           replace: '$1.import($3).then(mod => (mod.__esModule && mod.default) ? mod.default : mod)',
           flags: 'g'
         },
-        include: [helpers.root('src')]
+        include: [helpers.root('src')],
+        enforce: 'pre'
       },
 
       /*
@@ -132,7 +126,8 @@ var config = {
         exclude: [
           /node_modules/,
           /\.(html|css|sass)$/
-        ]
+        ],
+        enforce: 'pre'
       },
 
       /*
@@ -150,25 +145,10 @@ var config = {
           helpers.root('node_modules/@angular'),
           helpers.root('node_modules/@ngrx'),
           helpers.root('node_modules/@angular2-material')
-        ]
-      }
-
-    ],
-    noParse: [
-      path.join(__dirname, 'node_modules', 'zone.js', 'dist'),
-      path.join(__dirname, 'node_modules', 'angular2', 'bundles')
-    ],
-
-    /*
-     * An array of automatically applied loaders.
-     *
-     * IMPORTANT: The loaders here are resolved relative to the resource which they are applied to.
-     * This means they are not resolved relative to the configuration file.
-     *
-     * See: http://webpack.github.io/docs/configuration.html#module-loaders
-     */
-    loaders: [
-
+        ],
+        enforce: 'pre'
+      },
+      // LOADERS
       /*
        * Typescript loader support for .ts and Angular 2 async routes via .async.ts
        *
@@ -179,20 +159,12 @@ var config = {
         test: /\.ts$/,
         loaders: ['awesome-typescript-loader', 'angular2-template-loader']
       },
-      /*
-       * Json loader support for *.json files.
-       *
-       * See: https://github.com/webpack/json-loader
-       */
-      {
-        test: /\.json$/,
-        loader: 'json-loader'
-      },
       {
         test: /\.(png|woff|woff2|eot|ttf|svg)$/,
         loader: 'url-loader?limit=100000'
       },
       // https://github.com/jtangelder/sass-loader#usage
+      // TODO appConfig.srcSASS
       {
         test: /\.scss$/,
         loaders: ["style", "css", "sass"]
@@ -220,9 +192,6 @@ var config = {
 
     ]
 
-  },
-  sassLoader: {
-    includePaths: [appConfig.srcSASS]
   },
 
   /*
@@ -265,13 +234,7 @@ var config = {
      *
      * See: https://www.npmjs.com/package/copy-webpack-plugin
      */
-    new CopyWebpackPlugin([{
-      from: appConfig.srcIMG,
-      to: 'img'
-    }, {
-      from: appConfig.srcI18N,
-      to: 'i18n'
-    }]),
+    new CopyWebpackPlugin(appConfig.copy),
     /**
      * Plugin: DefinePlugin
      * Description: Define free variables.
@@ -300,7 +263,7 @@ var config = {
    * See: https://webpack.github.io/docs/configuration.html#node
    */
   node: {
-    global: 'window',
+    global: true,
     crypto: 'empty',
     module: false,
     clearImmediate: false,

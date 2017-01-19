@@ -43,13 +43,8 @@ module.exports = webpackMerge(commonConfig, {
    * See: http://webpack.github.io/docs/configuration.html#module
    */
   module: {
-
-    /**
-     * An array of applied pre and post loaders.
-     *
-     * See: http://webpack.github.io/docs/configuration.html#module-preloaders-module-postloaders
-     */
-    postLoaders: [
+    rules: [
+      // POST-LOADERS
 
       /**
        * Instruments JS files with Istanbul for subsequent code coverage reporting.
@@ -67,7 +62,8 @@ module.exports = webpackMerge(commonConfig, {
         exclude: [
           /\.(e2e|spec)\.ts$/,
           /node_modules/
-        ]
+        ],
+        enforce: 'post'
       }
 
     ]
