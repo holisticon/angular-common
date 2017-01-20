@@ -1,12 +1,14 @@
 var path = require("path"),
   sourcePath = 'test/app',
-  sourceRoot = path.resolve(__dirname, '..', sourcePath);
+  distPath = 'dist',
+  sourceRoot = path.resolve(__dirname, '..', sourcePath),
+  distRoot = path.resolve(__dirname, '..', distPath);
 
 var appConfig = {
   srcPath: sourceRoot,
   genPath: 'src-gen',
   testPath: 'test/specs',
-  distPath: 'dist',
+  distPath: distRoot,
   templatesPath: 'scripts/templates',
   specs: '/**/*.spec.ts',
   testBundle: path.resolve(__dirname, './spec-bundle.js'),

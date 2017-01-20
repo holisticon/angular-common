@@ -113,6 +113,7 @@ function mergeAppConfig(overwrittenConfig) { /*eslint complexity: [error, 22]*/
     dist: appConfig.dist || path.resolve(distPath),
     genPath: genPath,
     junit: junit,
+    copy: appConfig.copy,
     indexFiles: indexFiles,
     gen: appConfig.gen || path.resolve(genPath),
     chunks: appConfig.chunks || defaultAppConfig.chunks,

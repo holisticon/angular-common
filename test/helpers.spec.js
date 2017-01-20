@@ -31,8 +31,10 @@ describe('mergeAppConfig', () => {
     var config = mergeAppConfig();
     expect(config).toBeDefined();
     var expectation = getAppConfig();
+    delete config['copy'];
     delete config['junit'];
     delete expectation['junit'];
+    delete expectation['copy'];
     expect(config).toEqualJson(expectation);
   });
 
@@ -40,8 +42,10 @@ describe('mergeAppConfig', () => {
     var config = mergeAppConfig(null);
     expect(config).toBeDefined();
     var expectation = getAppConfig();
+    delete config['copy'];
     delete config['junit'];
     delete expectation['junit'];
+    delete expectation['copy'];
     expect(config).toEqualJson(expectation);
   });
 
@@ -49,8 +53,10 @@ describe('mergeAppConfig', () => {
     var config = mergeAppConfig({});
     expect(config).toBeDefined();
     var expectation = getAppConfig();
+    delete config['copy'];
     delete config['junit'];
     delete expectation['junit'];
+    delete expectation['copy'];
     expect(config).toEqualJson(expectation);
   });
 
@@ -58,6 +64,7 @@ describe('mergeAppConfig', () => {
     var config = mergeAppConfig({ srcPath: 'src', testPath: 'tests' });
     expect(config).toBeDefined();
     var expectation = getAppConfig();
+    delete config['copy'];
     delete config['junit'];
     delete expectation['junit'];
     expect(config).not.toEqualJson(expectation);

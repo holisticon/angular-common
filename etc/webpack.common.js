@@ -115,10 +115,6 @@ var config = {
     // resolve https://github.com/holisticon/angular-common/issues/10
     exprContextCritical: false,
 
-    noParse: [
-      /@angular|zone.js/
-    ],
-
     /*
      * An array of automatically applied loaders.
      *
@@ -193,7 +189,7 @@ var config = {
       // TODO appConfig.srcSASS
       {
         test: /\.scss$/,
-        loaders: ["style", "css", "sass"]
+        loaders: ['style-loader', 'css-loader', 'sass-loader']
       },
       /*
        * to string and css loader support for *.css files
