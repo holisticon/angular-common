@@ -19,13 +19,7 @@ var appConfig = {
   chunks: {
     name: ['polyfills', 'vendor'].reverse()
   },
-  copy: [{
-    from: path.resolve(sourceRoot, 'img'),
-    to: 'img'
-  }, {
-    from: path.resolve(sourceRoot, 'i18n'),
-    to: 'i18n'
-  }],
+  copy: [],
   indexFiles: [{
     chunks: ['main', 'polyfills', 'vendor'],
     template: path.resolve(sourceRoot, 'index.html'),
