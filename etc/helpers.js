@@ -1,11 +1,17 @@
+const DEBUG_ENV = 'holisticon_angular-common';
 const path = require('path');
 const util = require('util');
-const debugLog = util.debuglog('@holisticon/angular-common/helpers');
+const debugLog = util.debuglog(DEBUG_ENV);
 const defaultAppConfig = require('./appConfig');
 const providedAppConfig = require(process.env.APP_CONFIG || './appConfig');
 
 // Helper functions
 const ROOT = path.resolve(__dirname, '..');
+
+function isDebug() {
+  var env = process.env || {};
+  return env.NODE_DEBUG === DEBUG_ENV ? true : false
+}
 
 function hasProcessFlag(flag) {
   return process.argv.join('').indexOf(flag) > -1;
@@ -113,7 +119,7 @@ function mergeAppConfig(overwrittenConfig) { /*eslint complexity: [error, 22]*/
     dist: appConfig.dist || path.resolve(distPath),
     genPath: genPath,
     junit: junit,
-    copy: appConfig.copy,
+    copy: appConfig.copy || defaultAppConfig.copy,
     indexFiles: indexFiles,
     gen: appConfig.gen || path.resolve(genPath),
     chunks: appConfig.chunks || defaultAppConfig.chunks,
@@ -134,6 +140,8 @@ function getAppConfig() {
   return mergeAppConfig(providedAppConfig);
 }
 
+exports.DEBUG_ENV = DEBUG_ENV;
+exports.isDebug = isDebug;
 exports.mergeAppConfig = mergeAppConfig;
 exports.getAppConfig = getAppConfig;
 exports.hasProcessFlag = hasProcessFlag;

@@ -8,6 +8,7 @@
     "build": "npm run tslint && npm run tsc && cross-env NODE_ENV=production webpack",
     "lite": "lite-server",
     "test": "cross-env NODE_ENV=test jasmine-node test/*.spec.js --junitreport --output target/test-reports/ --verbose --noStack --color",
+    "debug": "node --debug-brk node_modules/jasmine-node/lib/jasmine-node/cli.js test/*.spec.js",
     "e2e": "cd test && npm i && cd .. && karma start test/karma.conf.ci.js",
     "watch-test": "cross-env NODE_ENV=test karma start",
     "tslint": "tslint \"test/**/*.ts\" --exclude \"test/node_modules/**/*\"",

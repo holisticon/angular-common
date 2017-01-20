@@ -84,6 +84,22 @@ Configure proxy:
 
 ### Advanced Usage
 
+#### Debugging
+
+If you need to debug the tests use the node-inspector:
+```
+npm run debug
+node-inspector --web-port=8282
+```
+
+You can then open chrome at *http://127.0.0.1:8282/?port=5858* for debugging.
+
+If you want to have verbose logging add NODE_DEBUG=holisticon_angular-common:
+
+```
+NODE_DEBUG=holisticon_angular-common npm run build
+```
+
 #### Multiple Entries
 
 ```javascript

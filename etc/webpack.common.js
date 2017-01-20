@@ -3,7 +3,8 @@ const path = require('path');
 const os = require('os');
 const helpers = require('./helpers');
 const appConfig = helpers.getAppConfig();
-const debugLog = util.debuglog('@holisticon/angular-common/webpack.common');
+const debugLog = util.debuglog(helpers.DEBUG_ENV);
+const isDebug = helpers.isDebug();
 // WEBPACK
 const webpack = require('webpack');
 
@@ -36,19 +37,19 @@ var config = {
 
   stats: {
     // Add asset Information
-    assets: true,
+    assets: isDebug,
     // Sort assets by a field
     assetsSort: "field",
     // Add information about cached (not built) modules
-    cached: true,
+    cached: isDebug,
     // Add children information
-    children: true,
+    children: isDebug,
     // Add chunk information (setting this to `false` allows for a less verbose output)
-    chunks: true,
+    chunks: isDebug,
     // Add built modules information to chunk information
-    chunkModules: true,
+    chunkModules: isDebug,
     // Add the origins of chunks and chunk merging info
-    chunkOrigins: true,
+    chunkOrigins: isDebug,
     // Sort the chunks by a field
     chunksSort: "field",
     // Context directory for request shortening
@@ -58,23 +59,23 @@ var config = {
     // Add details to errors (like resolving log)
     errorDetails: true,
     // Add the hash of the compilation
-    hash: true,
+    hash: isDebug,
     // Add built modules information
-    modules: true,
+    modules: isDebug,
     // Sort the modules by a field
     modulesSort: "field",
     // Add public path information
-    publicPath: true,
+    publicPath: isDebug,
     // Add information about the reasons why modules are included
-    reasons: true,
+    reasons: isDebug,
     // Add the source code of modules
-    source: true,
+    source: isDebug,
     // Add timing information
-    timings: true,
+    timings: isDebug,
     // Add webpack version information
-    version: true,
+    version: isDebug,
     // Add warnings
-    warnings: true
+    warnings: isDebug
   },
   /*
    * The entry point for the bundle
