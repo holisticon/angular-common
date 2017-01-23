@@ -23,6 +23,7 @@ Or if you want to use the development version (nightly build), which maybe not s
 ```
 npm install @holisticon/angular-common@next --save-dev
 ```
+
 ## Usage
 
 ### Basic Usage
@@ -111,6 +112,13 @@ var path = require("path"),
 var appConfig = {
   srcPath: srcPath,
   testPath: testPath,
+  copy: [{
+    from: sourceRoot + '/img',
+    to: 'img'
+  }, {
+    from: sourceRoot + '/i18n',
+    to: 'i18n'
+  }],
   entry: {
     'polyfills': sourceRoot + '/polyfills.browser.ts',
     'app': sourceRoot + '/main.browser.ts',

@@ -63,7 +63,7 @@
     "karma-junit-reporter": "1.2.0",
     "karma-phantomjs-launcher": "1.0.2",
     "karma-sourcemap-loader": "0.3.7",
-    "karma-webpack": "1.8.0",
+    "karma-webpack": "2.0.2",
     "node-sass": "3.10.1",
     "open-browser-webpack-plugin": "0.0.2",
     "phantomjs-polyfill": "0.0.2",
