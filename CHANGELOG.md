@@ -1,3 +1,33 @@
+<a name="1.1.0"></a>
+# [1.1.0](https://github.com/holisticon/angular-common/compare/v1.0.10...v1.1.0) (2017-01-23)
+
+
+### Bug Fixes
+
+* **build:** Fix "Unexpected token punc ({)" ([625b150](https://github.com/holisticon/angular-common/commit/625b150)), closes [#24](https://github.com/holisticon/angular-common/issues/24)
+* **build:** Remove HMR due to build errors ([a4489fa](https://github.com/holisticon/angular-common/commit/a4489fa))
+* **build:** Use new webpack config ([27dc480](https://github.com/holisticon/angular-common/commit/27dc480))
+* **build:** Use newer awesome-typescript-loader plugin ([02c1162](https://github.com/holisticon/angular-common/commit/02c1162))
+* **deprecation:** remove obsolete dedupe plugin ([2aa84c8](https://github.com/holisticon/angular-common/commit/2aa84c8))
+* **karma:** Fix chrome mimetype issues in karma ([70a19f6](https://github.com/holisticon/angular-common/commit/70a19f6))
+* **karma-timeout:** Use newer karma-junit-reporter ([29aa629](https://github.com/holisticon/angular-common/commit/29aa629))
+* **nuild:** Fix hmr-loader build errors ([bd06575](https://github.com/holisticon/angular-common/commit/bd06575))
+* **webpack:** Fix sourcemapping issues in karma ([ab568d0](https://github.com/holisticon/angular-common/commit/ab568d0))
+
+
+### Features
+
+* **dedupe:** Enable dedupe plugin ([037cc1b](https://github.com/holisticon/angular-common/commit/037cc1b))
+* **karma:** karma logging ([0108436](https://github.com/holisticon/angular-common/commit/0108436))
+* **karma:** Update karma webpack plugin ([e555b48](https://github.com/holisticon/angular-common/commit/e555b48))
+* **karma:** Update karma webpack plugin ([ae43070](https://github.com/holisticon/angular-common/commit/ae43070))
+* **logging:** Improve logging ([1c11fc6](https://github.com/holisticon/angular-common/commit/1c11fc6))
+* **verbose-logging:** Add verbose/debug logging ([296147c](https://github.com/holisticon/angular-common/commit/296147c))
+* **webpack:** Use new webpack config ([7d01143](https://github.com/holisticon/angular-common/commit/7d01143))
+* **webpack:** Use newer webpack config style ([8f9fbfa](https://github.com/holisticon/angular-common/commit/8f9fbfa))
+
+
+
 <a name="1.0.10"></a>
 ## [1.0.10](https://github.com/holisticon/angular-common/compare/v1.0.8...v1.0.10) (2017-01-11)
 
