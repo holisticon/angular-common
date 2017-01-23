@@ -1,12 +1,13 @@
 /**
  * @author: hypery2k
  */
-var util = require('util');
-var debugLog = util.debuglog('@holisticon/angular-common/karma.conf');
+const util = require('util');
 const helpers = require('./helpers');
+const debugLog = util.debuglog(helpers.DEBUG_ENV);
+const isDebug = helpers.isDebug();
 const appConfig = helpers.getAppConfig();
 const webpackConfig = require('./webpack.test.js');
-webpackConfig.entry = {};
+delete webpackConfig.entry;
 
 const JUNIT = appConfig.junit;
 const specs = appConfig.testSpecs;
@@ -70,8 +71,28 @@ module.exports = function (config) {
     //webpackServer: {noInfo: true},
 
     webpackMiddleware: {
-      stats: {
-        chunks: false,
+      stats: { // Add asset Information
+        assets: isDebug,
+        // Sort assets by a field
+        assetsSort: "field",
+        // Add information about cached (not built) modules
+        cached: isDebug,
+        // Add children information
+        children: isDebug,
+        // Add chunk information (setting this to `false` allows for a less verbose output)
+        chunks: isDebug,
+        // Add built modules information to chunk information
+        chunkModules: isDebug,
+        // Add the origins of chunks and chunk merging info
+        chunkOrigins: isDebug,
+        // Sort the chunks by a field
+        chunksSort: "field",
+        // Context directory for request shortening
+        context: "../src/",
+        // Add errors
+        errors: true,
+        // Add details to errors (like resolving log)
+        errorDetails: true,
         colors: true
       }
     },

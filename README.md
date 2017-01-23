@@ -23,6 +23,7 @@ Or if you want to use the development version (nightly build), which maybe not s
 ```
 npm install @holisticon/angular-common@next --save-dev
 ```
+
 ## Usage
 
 ### Basic Usage
@@ -84,6 +85,22 @@ Configure proxy:
 
 ### Advanced Usage
 
+#### Debugging
+
+If you need to debug the tests use the node-inspector:
+```
+npm run debug
+node-inspector --web-port=8282
+```
+
+You can then open chrome at *http://127.0.0.1:8282/?port=5858* for debugging.
+
+If you want to have verbose logging add NODE_DEBUG=holisticon_angular-common:
+
+```
+NODE_DEBUG=holisticon_angular-common npm run build
+```
+
 #### Multiple Entries
 
 ```javascript
@@ -95,6 +112,13 @@ var path = require("path"),
 var appConfig = {
   srcPath: srcPath,
   testPath: testPath,
+  copy: [{
+    from: sourceRoot + '/img',
+    to: 'img'
+  }, {
+    from: sourceRoot + '/i18n',
+    to: 'i18n'
+  }],
   entry: {
     'polyfills': sourceRoot + '/polyfills.browser.ts',
     'app': sourceRoot + '/main.browser.ts',

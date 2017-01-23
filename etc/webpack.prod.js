@@ -11,12 +11,11 @@ const commonConfig = require('./webpack.common.js'); // the settings that are co
 /**
  * Webpack Plugins
  */
-const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
+const CheckerPlugin = require('awesome-typescript-loader').CheckerPlugin;
 const ProvidePlugin = webpack.ProvidePlugin;
 const DefinePlugin = webpack.DefinePlugin;
 const NormalModuleReplacementPlugin = webpack.NormalModuleReplacementPlugin;
 const IgnorePlugin = webpack.IgnorePlugin;
-const DedupePlugin = webpack.optimize.DedupePlugin;
 const UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 const WebpackMd5Hash = require('webpack-md5-hash');
 
@@ -34,13 +33,6 @@ const METADATA = webpackMerge(commonConfig.metadata, {
 });
 
 module.exports = webpackMerge(commonConfig, {
-
-  /**
-   * Switch loaders to debug mode.
-   *
-   * See: http://webpack.github.io/docs/configuration.html#debug
-   */
-  debug: false,
 
   /**
    * Options affecting the output of the compilation.
@@ -100,12 +92,13 @@ module.exports = webpackMerge(commonConfig, {
     new webpack.optimize.CommonsChunkPlugin(appConfig.chunks),
 
     /*
-     * Plugin: ForkCheckerPlugin
+     * Plugin: CheckerPlugin
      * Description: Do type checking in a separate process, so webpack don't need to wait.
      *
-     * See: https://github.com/s-panferov/awesome-typescript-loader#forkchecker-boolean-defaultfalse
+     * See: https://github.com/s-panferov/awesome-typescript-loader#configuration
      */
-    new ForkCheckerPlugin(),
+    new CheckerPlugin(),
+
 
     /**
      * Plugin: WebpackMd5Hash
@@ -114,17 +107,6 @@ module.exports = webpackMerge(commonConfig, {
      * See: https://www.npmjs.com/package/webpack-md5-hash
      */
     new WebpackMd5Hash(),
-
-    /**
-     * Plugin: DedupePlugin
-     * Description: Prevents the inclusion of duplicate code into your bundle
-     * and instead applies a copy of the function at runtime.
-     *
-     * See: https://webpack.github.io/docs/list-of-plugins.html#defineplugin
-     * See: https://github.com/webpack/docs/wiki/optimization#deduplication
-     */
-    // TODO new DedupePlugin(),
-    // see https://github.com/webpack/webpack/issues/2644
 
     /**
      * Plugin: DefinePlugin
@@ -219,51 +201,6 @@ module.exports = webpackMerge(commonConfig, {
     //   threshold: 2 * 1024
     // })
 
-  ],
-
-  /**
-   * Static analysis linter for TypeScript advanced options configuration
-   * Description: An extensible linter for the TypeScript language.
-   *
-   * See: https://github.com/wbuchwalter/tslint-loader
-   */
-  tslint: {
-    emitErrors: true,
-    failOnHint: true,
-    resourcePath: appConfig.srcApp
-  },
-
-  /**
-   * Html loader advanced options
-   *
-   * See: https://github.com/webpack/html-loader#advanced-options
-   */
-  // TODO: Need to workaround Angular 2's html syntax => #id [bind] (event) *ngFor
-  htmlLoader: {
-    minimize: true,
-    removeAttributeQuotes: false,
-    caseSensitive: true,
-    customAttrSurround: [
-      [/#/, /(?:)/],
-      [/\*/, /(?:)/],
-      [/\[?\(?/, /(?:)/]
-    ],
-    customAttrAssign: [/\)?\]?=/]
-  },
-
-  /*
-   * Include polyfills or mocks for various node stuff
-   * Description: Node configuration
-   *
-   * See: https://webpack.github.io/docs/configuration.html#node
-   */
-  node: {
-    global: 'window',
-    crypto: 'empty',
-    process: false,
-    module: false,
-    clearImmediate: false,
-    setImmediate: false
-  }
+  ]
 
 });

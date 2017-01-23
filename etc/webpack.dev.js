@@ -4,7 +4,6 @@
 const util = require('util');
 const helpers = require('./helpers');
 const appConfig = helpers.getAppConfig();
-const debugLog = util.debuglog('@holisticon/angular-common/webpack.dev');
 
 // WEBPACK
 const webpack = require('webpack');
@@ -36,20 +35,6 @@ const METADATA = webpackMerge(commonConfig.metadata, {
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
 module.exports = webpackMerge(commonConfig, {
-
-  /**
-   * Merged metadata from webpack.common.js for index.html
-   *
-   * See: (custom attribute)
-   */
-  metadata: METADATA,
-
-  /**
-   * Switch loaders to debug mode.
-   *
-   * See: http://webpack.github.io/docs/configuration.html#debug
-   */
-  // debug: true,
 
   /**
    * Developer tool to enhance debugging
@@ -135,18 +120,6 @@ module.exports = webpackMerge(commonConfig, {
   ],
 
   /**
-   * Static analysis linter for TypeScript advanced options configuration
-   * Description: An extensible linter for the TypeScript language.
-   *
-   * See: https://github.com/wbuchwalter/tslint-loader
-   */
-  tslint: {
-    emitErrors: false,
-    failOnHint: false,
-    resourcePath: 'src'
-  },
-
-  /**
    * Webpack Development Server configuration
    * Description: The webpack-dev-server is a little node.js Express server.
    * The server emits information about the compilation state to the client,
@@ -162,7 +135,7 @@ module.exports = webpackMerge(commonConfig, {
       aggregateTimeout: 300,
       poll: 1000
     },
-    outputPath: appConfig.dist,
+    contentBase: appConfig.dist,
     proxy: appConfig.proxy
   },
 
@@ -173,7 +146,7 @@ module.exports = webpackMerge(commonConfig, {
    * See: https://webpack.github.io/docs/configuration.html#node
    */
   node: {
-    global: 'window',
+    global: true,
     crypto: 'empty',
     process: true,
     module: false,
