@@ -16,9 +16,6 @@ var appConfig = {
     title: 'AngularCommon',
     dir: 'dist/test-reports'
   },
-  chunks: {
-    name: ['polyfills', 'vendor'].reverse()
-  },
   copy: [],
   indexFiles: [{
     chunks: ['main', 'polyfills', 'vendor'],

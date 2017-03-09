@@ -160,7 +160,10 @@ Add entries to the property *additionalWebpackOptions*:
       new webpack.NormalModuleReplacementPlugin(
         /moment[\/\\]locale$/,
         /de|en/
-      )
+      ),
+      new webpack.optimize.CommonsChunkPlugin({
+        name: ['polyfills', 'vendor','common']
+      }),
     ]
   },
 module.exports = appConfig;
