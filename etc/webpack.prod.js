@@ -82,16 +82,6 @@ module.exports = webpackMerge(commonConfig, {
   plugins: [
 
     /*
-     * Plugin: CommonsChunkPlugin
-     * Description: Shares common code between the pages.
-     * It identifies common modules and put them into a commons chunk.
-     *
-     * See: https://webpack.github.io/docs/list-of-plugins.html#commonschunkplugin
-     * See: https://github.com/webpack/docs/wiki/optimization#multi-page-app
-     */
-    new webpack.optimize.CommonsChunkPlugin(appConfig.chunks),
-
-    /*
      * Plugin: CheckerPlugin
      * Description: Do type checking in a separate process, so webpack don't need to wait.
      *
