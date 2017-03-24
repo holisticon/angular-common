@@ -1,11 +1,18 @@
+var path = require("path");
 var appConfig = {
-  srcPath: 'app',
-  genPath: 'src-gen',
-  copy: [],
-  testPath: 'specs',  junit: {
-    name: 'Holisticon-TestApp',
-    dir: '../target/test-reports'
-  },
+    srcPath: 'test/app',
+    testPath: 'test/specs',
+    genPath: 'src-gen',
+    copy: [],
+    indexFiles: [{
+        chunks: ['main', 'polyfills', 'vendor'],
+        template: path.resolve('test', 'app', 'index.html'),
+        chunksSortMode: 'dependency'
+    }],
+    junit: {
+        name: 'Holisticon-TestApp',
+        dir: '../target/test-reports'
+    },
 };
 
 module.exports = appConfig;
