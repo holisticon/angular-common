@@ -16,6 +16,7 @@ const commonConfig = require('./webpack.common.js'); // the settings that are co
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const VisualizerPlugin = require('webpack-visualizer-plugin');
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
+const OfflinePlugin = require('offline-plugin');
 
 /**
  * Webpack Constants
@@ -34,7 +35,7 @@ const METADATA = webpackMerge(commonConfig.metadata, {
  *
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
-module.exports = webpackMerge(commonConfig, {
+let config =  webpackMerge(commonConfig, {
 
   /**
    * Developer tool to enhance debugging
@@ -155,3 +156,8 @@ module.exports = webpackMerge(commonConfig, {
   }
 
 });
+
+if (appConfig.pwa) {
+  config.plugins.push(new OfflinePlugin(appConfig.pwa));
+}
+module.exports = config

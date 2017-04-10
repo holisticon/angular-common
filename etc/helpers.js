@@ -107,6 +107,7 @@ function mergeAppConfig(overwrittenConfig) { /*eslint complexity: [error, 22]*/
     testPath: testPath,
     src: sourceResolved,
     test: testPathResolved,
+    pwa: appConfig.pwa,
     testBundle: defaultAppConfig.testBundle,
     templates: templatesResolved || srcPath + '/' + templatesPath,
     templatesPath: templatesPath,

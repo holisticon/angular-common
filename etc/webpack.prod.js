@@ -18,6 +18,7 @@ const NormalModuleReplacementPlugin = webpack.NormalModuleReplacementPlugin;
 const IgnorePlugin = webpack.IgnorePlugin;
 const UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 const WebpackMd5Hash = require('webpack-md5-hash');
+const OfflinePlugin = require('offline-plugin');
 
 /**
  * Webpack Constants
@@ -32,7 +33,7 @@ const METADATA = webpackMerge(commonConfig.metadata, {
   HMR: false
 });
 
-module.exports = webpackMerge(commonConfig, {
+let config = webpackMerge(commonConfig, {
 
   /**
    * Options affecting the output of the compilation.
@@ -141,8 +142,8 @@ module.exports = webpackMerge(commonConfig, {
       // }, // debug
       // comments: true, //debug
       beautify: false, //prod
-      mangle: {screw_ie8: true}, //prod
-      compress: {screw_ie8: true}, //prod
+      mangle: { screw_ie8: true }, //prod
+      compress: { screw_ie8: true }, //prod
       comments: false //prod
     }),
     // enforce linting on prod build
@@ -194,3 +195,7 @@ module.exports = webpackMerge(commonConfig, {
   ]
 
 });
+if (appConfig.pwa) {
+  config.plugins.push(new OfflinePlugin(appConfig.pwa));
+}
+module.exports = config

@@ -65,6 +65,7 @@
     "karma-sourcemap-loader": "0.3.7",
     "karma-webpack": "2.0.2",
     "node-sass": "3.13.1",
+    "offline-plugin": "4.6.2",
     "open-browser-webpack-plugin": "0.0.2",
     "phantomjs-polyfill": "0.0.2",
     "phantomjs-prebuilt": "2.1.14",
