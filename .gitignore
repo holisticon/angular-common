@@ -4,7 +4,8 @@
 dist/
 node_modules/
 typings/
-test/app/*.js*
+test/e2e/app/*.js*
+test/e2e/specs/*.js*
 test/target/
 test/specs/*.js*
 target/

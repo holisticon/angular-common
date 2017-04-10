@@ -1,7 +1,7 @@
 var path = require("path");
 var appConfig = {
-    srcPath: 'test/app',
-    testPath: 'test/specs',
+    srcPath: 'app',
+    testPath: 'specs',
     genPath: 'src-gen',
     copy: [],
     indexFiles: [{
