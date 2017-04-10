@@ -37,6 +37,6 @@
     "node_modules",
     "dist",
     "target",
-    "test/node_modules"
+    "test/e2e/node_modules"
   ]
 }
