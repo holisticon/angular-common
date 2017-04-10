@@ -6,12 +6,12 @@ var appConfig = {
     copy: [],
     indexFiles: [{
         chunks: ['main', 'polyfills', 'vendor'],
-        template: path.resolve('test', 'app', 'index.html'),
+        template: path.resolve('app', 'index.html'),
         chunksSortMode: 'dependency'
     }],
     junit: {
         name: 'Holisticon-TestApp',
-        dir: '../target/test-reports'
+        dir: '../target/e2e-reports'
     },
 };
 

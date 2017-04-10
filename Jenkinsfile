@@ -1,6 +1,5 @@
 properties properties: [
-  [$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '30', numToKeepStr: '10']],
-  [$class: 'GithubProjectProperty', displayName: '', projectUrlStr: 'https://github.com/holisticon/angular-common'],
+  [$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '30', numToKeepStr: '10']]
 ]
 
 node {
@@ -33,6 +32,7 @@ node {
     stage('Test') {
       sh "npm run test && npm run e2e"
       junit 'target/test-reports/TEST*.xml'
+      junit 'target/e2e-reports/TEST*.xml'
     }
 
     stage('Publish NPM snapshot') {
