@@ -165,6 +165,7 @@ var appConfig = {
 
 module.exports = appConfig;
 
+```
 
 #### Add additional webpack options:
 
