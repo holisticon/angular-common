@@ -164,10 +164,13 @@ var config = {
         loader: 'source-map-loader',
         exclude: [
           // these packages have problems with their sourcemaps
-          helpers.root('node_modules/rxjs'),
-          helpers.root('node_modules/@angular'),
-          helpers.root('node_modules/@ngrx'),
-          helpers.root('node_modules/@angular2-material')
+          path.resolve(__dirname, '../../../ionic-angular'),
+          path.resolve(__dirname, '../../../@ionic'),
+          path.resolve(__dirname, '../../../@ionic-native'),
+          path.resolve(__dirname, '../../../@rxjs'),
+          path.resolve(__dirname, '../../../@angular'),
+          path.resolve(__dirname, '../../../@ngrx'),
+          path.resolve(__dirname, '../../../@angular2-material')
         ],
         enforce: 'pre'
       },
