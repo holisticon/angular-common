@@ -9,11 +9,14 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "sourceMap": true,
+    "noEmitHelpers": true,
+    "noEmitOnError": true,
+    "importHelpers": true,
     "baseUrl": "./lib",
-    "paths": [],
     "lib": [
       "dom",
-      "es6"
+      "es2015",
+      "es2015.iterable"
     ],
     "types": [
       "jasmine",
