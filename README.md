@@ -1,5 +1,7 @@
 # Angular Common Module
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/holisticon/angular-common.svg)](https://greenkeeper.io/)
+
 [![Build Status](https://travis-ci.org/holisticon/angular-common.svg?branch=master)](https://travis-ci.org/holisticon/angular-common)
 [![Build status](https://ci.appveyor.com/api/projects/status/s06xx110clf7md5a?svg=true)](https://ci.appveyor.com/project/holisticon-github/angular-common)
 [![npm version](https://badge.fury.io/js/%40holisticon%2Fangular-common.svg)](https://badge.fury.io/js/%40holisticon%2Fangular-common)
