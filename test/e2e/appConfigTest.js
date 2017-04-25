@@ -11,7 +11,7 @@ var appConfig = {
     }],
     junit: {
         name: 'Holisticon-TestApp',
-        dir: '../target/e2e-reports'
+        dir: '../../target/e2e-reports'
     },
 };
 
