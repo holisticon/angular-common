@@ -1,3 +1,11 @@
+"use strict";
+
+/**
+ * Webpack Profile for Development
+ *
+ * @author: Martin Reinhardt (hypery2k)
+ */
+
 /**
  * @author: hypery2k
  */

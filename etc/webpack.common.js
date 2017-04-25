@@ -1,3 +1,11 @@
+"use strict";
+
+/**
+ * Webpack Profile which is shared
+ *
+ * @author: Martin Reinhardt (hypery2k)
+ */
+
 const util = require('util');
 const path = require('path');
 const os = require('os');

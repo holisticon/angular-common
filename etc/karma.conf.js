@@ -1,6 +1,11 @@
+"use strict";
+
 /**
- * @author: hypery2k
+ * Karma Config
+ *
+ * @author: Martin Reinhardt (hypery2k)
  */
+
 const util = require('util');
 const helpers = require('./helpers');
 const debugLog = util.debuglog(helpers.DEBUG_ENV);
