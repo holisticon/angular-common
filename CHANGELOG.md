@@ -1,3 +1,20 @@
+<a name="1.2.2"></a>
+## [1.2.2](https://github.com/holisticon/angular-common/compare/v1.2.1...v1.2.2) (2017-04-25)
+
+
+### Bug Fixes
+
+* **source-map-error:** Solve source mapping issue ([cdcd8ac](https://github.com/holisticon/angular-common/commit/cdcd8ac))
+* **test-errors:** Remove tshelpers ([0adcd53](https://github.com/holisticon/angular-common/commit/0adcd53))
+
+
+### Features
+
+* **pwa-support:** Adding basic pwa-support ([#27](https://github.com/holisticon/angular-common/issues/27)) ([8f38862](https://github.com/holisticon/angular-common/commit/8f38862))
+* **typescript:** Use tslib ([b22b370](https://github.com/holisticon/angular-common/commit/b22b370))
+
+
+
 <a name="1.2.1"></a>
 ## [1.2.1](https://github.com/holisticon/angular-common/compare/v1.2.0...v1.2.1) (2017-03-24)
 

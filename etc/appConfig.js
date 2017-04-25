@@ -1,5 +1,5 @@
 var path = require("path"),
-  sourcePath = 'test/app',
+  sourcePath = 'test/e2e/app',
   distPath = 'dist',
   sourceRoot = path.resolve(__dirname, '..', sourcePath),
   distRoot = path.resolve(__dirname, '..', distPath);

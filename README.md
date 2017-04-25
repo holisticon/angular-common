@@ -148,6 +148,24 @@ module.exports = appConfig;
 
 ```
 
+#### PWA-Support
+
+If you want to build a PWA, you can utilize the included [Offline-Plugin](https://github.com/NekR/offline-plugin).
+Just enter an option pwa with the [configuration options](https://github.com/NekR/offline-plugin/blob/master/docs/options.md):
+
+```javascript
+...
+var appConfig = {
+  ...
+    pwa: {
+      // see https://github.com/NekR/offline-plugin/blob/master/docs/options.md
+    },
+  ...
+};
+
+module.exports = appConfig;
+
+```
 
 #### Add additional webpack options:
 
