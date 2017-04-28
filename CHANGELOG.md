@@ -1,3 +1,19 @@
+<a name="1.3.0"></a>
+# [1.3.0](https://github.com/holisticon/angular-common/compare/v1.2.3...v1.3.0) (2017-04-28)
+
+
+### Bug Fixes
+
+* **#29:** Resolve test errors ([6101f8d](https://github.com/holisticon/angular-common/commit/6101f8d))
+
+
+### Features
+
+* **#29:** Support for Angular 4 ([3715631](https://github.com/holisticon/angular-common/commit/3715631))
+* **#29:** Support for Angular 4 ([fdde9f1](https://github.com/holisticon/angular-common/commit/fdde9f1))
+
+
+
 <a name="1.2.3"></a>
 ## [1.2.3](https://github.com/holisticon/angular-common/compare/v1.2.2...v1.2.3) (2017-04-25)
 
