@@ -1,6 +1,6 @@
 var path = require("path");
 var appConfig = {
-    srcPath: 'app',
+    srcPath:  path.resolve('app'),
     testPath: 'specs',
     genPath: 'src-gen',
     copy: [],
