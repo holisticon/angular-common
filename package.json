@@ -12,7 +12,7 @@
     "lite": "lite-server",
     "test": "cross-env NODE_ENV=test jasmine-node test/specs/*.spec.js --junitreport --output target/test-reports/ --verbose --noStack --color",
     "debug": "node --debug-brk node_modules/jasmine-node/lib/jasmine-node/cli.js test/specs/*.spec.js",
-    "e2e": "cd test/e2e && npm i && npm run test",
+    "e2e": "cd test/e2e && npm run test",
     "watch-test": "cross-env NODE_ENV=test karma start",
     "tslint": "tslint \"test/**/*.ts\" --exclude \"test/e2e/node_modules/**/*\"",
     "tsc": "tsc",
