@@ -1,6 +1,11 @@
+"use strict";
+
 /**
- * @author: hypery2k
+ * Karma Config
+ *
+ * @author: Martin Reinhardt (hypery2k)
  */
+
 const util = require('util');
 const helpers = require('./helpers');
 const debugLog = util.debuglog(helpers.DEBUG_ENV);
@@ -88,7 +93,7 @@ module.exports = function (config) {
         // Sort the chunks by a field
         chunksSort: "field",
         // Context directory for request shortening
-        context: "../src/",
+        context: appConfig.srcPath,
         // Add errors
         errors: true,
         // Add details to errors (like resolving log)

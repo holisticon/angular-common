@@ -1,3 +1,11 @@
+"use strict";
+
+/**
+ * Helper module
+ *
+ * @author: Martin Reinhardt (hypery2k)
+ */
+
 const DEBUG_ENV = 'holisticon_angular-common';
 const path = require('path');
 const util = require('util');

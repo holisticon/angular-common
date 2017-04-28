@@ -1,5 +1,9 @@
+"use strict";
+
 /**
- * @author: hypery2k
+ * Webpack Profile for Production
+ *
+ * @author: Martin Reinhardt (hypery2k)
  */
 const util = require('util');
 const helpers = require('./helpers');

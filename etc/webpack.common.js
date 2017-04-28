@@ -1,3 +1,11 @@
+"use strict";
+
+/**
+ * Webpack Profile which is shared
+ *
+ * @author: Martin Reinhardt (hypery2k)
+ */
+
 const util = require('util');
 const path = require('path');
 const os = require('os');
@@ -53,7 +61,7 @@ var config = {
     // Sort the chunks by a field
     chunksSort: "field",
     // Context directory for request shortening
-    context: "../src/",
+    context: appConfig.srcPath,
     // Add errors
     errors: true,
     // Add details to errors (like resolving log)

@@ -1,6 +1,11 @@
+"use strict";
+
 /**
- * @author: hypery2k
+ * Karma Config for CI servers
+ *
+ * @author: Martin Reinhardt (hypery2k)
  */
+
 const baseConfig = require('./karma.conf.js');
 const defaultAppConfig = require('./appConfig');
 const appConfig = require(process.env.APP_CONFIG || './appConfig');

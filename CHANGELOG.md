@@ -1,3 +1,29 @@
+<a name="1.3.0"></a>
+# [1.3.0](https://github.com/holisticon/angular-common/compare/v1.2.3...v1.3.0) (2017-04-28)
+
+
+### Bug Fixes
+
+* **#29:** Resolve test errors ([6101f8d](https://github.com/holisticon/angular-common/commit/6101f8d))
+
+
+### Features
+
+* **#29:** Support for Angular 4 ([3715631](https://github.com/holisticon/angular-common/commit/3715631))
+* **#29:** Support for Angular 4 ([fdde9f1](https://github.com/holisticon/angular-common/commit/fdde9f1))
+
+
+
+<a name="1.2.3"></a>
+## [1.2.3](https://github.com/holisticon/angular-common/compare/v1.2.2...v1.2.3) (2017-04-25)
+
+
+### Features
+
+* **tslint:** Use newer tslint ([50713b6](https://github.com/holisticon/angular-common/commit/50713b6))
+
+
+
 <a name="1.2.2"></a>
 ## [1.2.2](https://github.com/holisticon/angular-common/compare/v1.2.1...v1.2.2) (2017-04-25)
 
@@ -26,7 +52,7 @@
 
 
 <a name="1.1.0"></a>
-# [1.1.0](https://github.com/holisticon/angular-common/compare/v1.0.10...v1.1.0) (2017-01-23)
+# [1.1.0](https://github.com/holisticon/angular-common/compare/v1.0.12...v1.1.0) (2017-01-23)
 
 
 ### Bug Fixes
@@ -36,10 +62,7 @@
 * **build:** Use new webpack config ([27dc480](https://github.com/holisticon/angular-common/commit/27dc480))
 * **build:** Use newer awesome-typescript-loader plugin ([02c1162](https://github.com/holisticon/angular-common/commit/02c1162))
 * **deprecation:** remove obsolete dedupe plugin ([2aa84c8](https://github.com/holisticon/angular-common/commit/2aa84c8))
-* **karma:** Fix chrome mimetype issues in karma ([70a19f6](https://github.com/holisticon/angular-common/commit/70a19f6))
-* **karma-timeout:** Use newer karma-junit-reporter ([29aa629](https://github.com/holisticon/angular-common/commit/29aa629))
 * **nuild:** Fix hmr-loader build errors ([bd06575](https://github.com/holisticon/angular-common/commit/bd06575))
-* **webpack:** Fix sourcemapping issues in karma ([ab568d0](https://github.com/holisticon/angular-common/commit/ab568d0))
 
 
 ### Features
@@ -52,6 +75,27 @@
 * **verbose-logging:** Add verbose/debug logging ([296147c](https://github.com/holisticon/angular-common/commit/296147c))
 * **webpack:** Use new webpack config ([7d01143](https://github.com/holisticon/angular-common/commit/7d01143))
 * **webpack:** Use newer webpack config style ([8f9fbfa](https://github.com/holisticon/angular-common/commit/8f9fbfa))
+
+
+
+<a name="1.0.12"></a>
+## [1.0.12](https://github.com/holisticon/angular-common/compare/v1.0.11...v1.0.12) (2017-01-18)
+
+
+### Bug Fixes
+
+* **karma:** Fix chrome mimetype issues in karma ([70a19f6](https://github.com/holisticon/angular-common/commit/70a19f6))
+
+
+
+<a name="1.0.11"></a>
+## [1.0.11](https://github.com/holisticon/angular-common/compare/v1.0.10...v1.0.11) (2017-01-18)
+
+
+### Bug Fixes
+
+* **karma-timeout:** Use newer karma-junit-reporter ([29aa629](https://github.com/holisticon/angular-common/commit/29aa629))
+* **webpack:** Fix sourcemapping issues in karma ([ab568d0](https://github.com/holisticon/angular-common/commit/ab568d0))
 
 
 
