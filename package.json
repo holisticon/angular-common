@@ -3,6 +3,9 @@
   "version": "1.2.3",
   "description": "Common angular build module for Angular 2",
   "scripts": {
+    "preclean": "npm i rimraf",
+    "clean": "rimraf .awcache node_modules  dist target 'src/**/*.js' 'src/**/*.js.map' test/e2e/.awcache test/e2e/node_modules",
+    "postclean": "npm i && cd test/e2e && npm i",
     "webpack": "webpack",
     "watch": "cross-env NODE_ENV=development webpack-dev-server --inline  --progress  --port 3000 ",
     "build": "npm run tslint && npm run tsc && cross-env NODE_ENV=production webpack",
@@ -107,8 +110,9 @@
     "jasmine-node": "1.14.5",
     "jsdoc": "3.4.3",
     "node-sass": "4.5.2",
+    "rimraf": "2.6.1",
     "rxjs": "5.2.0",
-    "zone.js": "0.8.5"
+    "zone.js": "0.8.9"
   },
   "peerDependencies": {
     "@angular/common": "^4.0.3",
@@ -119,8 +123,8 @@
     "@angular/platform-browser": "^4.0.3",
     "@angular/platform-browser-dynamic": "^4.0.3",
     "@angular/router": "^4.0.3",
-    "rxjs": "5.2.0",
-    "zone.js": "0.8.5"
+    "rxjs": "^5.2.0",
+    "zone.js": "^0.8.4"
   },
   "keywords": [
     "angular2",

@@ -25,7 +25,7 @@ node {
     }
 
     stage('Build') {
-      sh "npm install"
+      sh "npm run clean"
       sh "npm run build"
     }
 

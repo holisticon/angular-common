@@ -9,6 +9,7 @@ test/
 typings/
 target/
 *.log
+*.log.*
 *.tgz
 *.iml
 .npmrc
