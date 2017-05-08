@@ -46,7 +46,7 @@
     "copy-webpack-plugin": "4.0.1",
     "core-js": "2.4.1",
     "cross-env": "3.2.4",
-    "css-loader": "0.27.3",
+    "css-loader": "0.28.1",
     "del": "2.2.2",
     "es6-promise-loader": "1.0.2",
     "exports-loader": "0.6.4",
@@ -66,7 +66,7 @@
     "karma-junit-reporter": "1.2.0",
     "karma-phantomjs-launcher": "1.0.4",
     "karma-sourcemap-loader": "0.3.7",
-    "karma-webpack": "2.0.1",
+    "karma-webpack": "2.0.3",
     "node-sass": "4.5.2",
     "offline-plugin": "4.7.0",
     "open-browser-webpack-plugin": "0.0.5",
@@ -80,7 +80,7 @@
     "style-loader": "0.16.1",
     "to-fast-properties": "1.0.2",
     "to-string-loader": "1.1.5",
-    "tslib": "1.7.1",
+    "tslib": "1.7.0",
     "tslint": "5.2.0",
     "tslint-eslint-rules": "4.0.0",
     "tslint-loader": "3.5.3",
@@ -88,7 +88,7 @@
     "typescript": "2.3.2",
     "typings": "2.1.0",
     "url-loader": "0.5.8",
-    "webpack": "2.4.1",
+    "webpack": "2.5.1",
     "webpack-dev-server": "2.4.5",
     "webpack-md5-hash": "0.0.5",
     "webpack-merge": "4.1.0",
@@ -139,7 +139,7 @@
   "license": "MIT",
   "engine-strict": true,
   "engines": {
-    "node": ">= 4.4",
+    "node": ">= 6",
     "npm": ">= 3"
   }
 }
