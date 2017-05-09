@@ -57,18 +57,25 @@ module.exports = function (config) {
      * available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
      */
     preprocessors: {
-      [bundle]: ['webpack', 'sourcemap']
+      [bundle]: ['coverage', 'webpack', 'sourcemap']
     },
 
     webpack: webpackConfig,
 
+
     coverageReporter: {
-      dir: 'target/coverage-reports/',
-      reporters: [
-        {type: 'text-summary'},
-        {type: 'json'},
-        {type: 'html'}
-      ]
+      type: 'in-memory'
+    },
+
+    coverageIstanbulReporter: {
+        reports: [ 'text-summary' ],
+        fixWebpackSourcePaths: true
+    },
+
+    remapCoverageReporter: {
+      'text-summary': null,
+      json: 'target/ccoverage/coverage.json',
+      html: 'target/ccoverage/html'
     },
 
     // Webpack please don't spam the console when running in karma!
@@ -106,7 +113,7 @@ module.exports = function (config) {
      * possible values: 'dots', 'progress'
      * available reporters: https://npmjs.org/browse/keyword/karma-reporter
      */
-    reporters: ['progress', 'junit', 'kjhtml'],
+    reporters: ['progress', 'junit', 'coverage', 'remap-coverage', 'kjhtml'],
 
     /**
      * See https://github.com/karma-runner/karma-junit-reporter#configuration
@@ -144,7 +151,7 @@ module.exports = function (config) {
     singleRun: false
   });
 
-  config.files.push({pattern: specs, watched: false});
+  config.files.push({ pattern: specs, watched: false });
   config.preprocessors[specs] = ['webpack', 'sourcemap'];
 
   debugLog('Using following karma config:', config);
