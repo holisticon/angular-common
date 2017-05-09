@@ -188,7 +188,6 @@ var config = {
        *
        * See: https://github.com/s-panferov/awesome-typescript-loader
        */
-      // note that babel-loader is configured to run after ts-loader
       {
         test: /\.ts$/,
         loaders: ['awesome-typescript-loader']

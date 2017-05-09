@@ -49,7 +49,6 @@ module.exports = function (config) {
      * we are building the test environment in ./spec-bundle.js
      */
     files: [
-      'node_modules/babel-polyfill/dist/polyfill.js',
       bundle
     ],
 
