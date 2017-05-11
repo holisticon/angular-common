@@ -42,7 +42,7 @@ node {
     }
 
   } catch (e) {
-    rocketSend channel: 'jenkins', emoji: ':rotating_light:', message: 'Fehler'
+    rocketSend channel: 'holi-oss', emoji: ':rotating_light:', message: 'Fehler'
     throw e
   }
 
