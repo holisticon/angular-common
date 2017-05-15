@@ -11,7 +11,7 @@ const helpers = require('./helpers');
 const debugLog = util.debuglog(helpers.DEBUG_ENV);
 const isDebug = helpers.isDebug();
 const appConfig = helpers.getAppConfig();
-const webpackConfig = require('./webpack.test.js');
+const webpackConfig = require('./webpack.dev-test.js');
 delete webpackConfig.entry;
 
 const JUNIT = appConfig.junit;

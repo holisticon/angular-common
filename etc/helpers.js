@@ -116,6 +116,7 @@ function mergeAppConfig(overwrittenConfig) { /*eslint complexity: [error, 22]*/
     src: sourceResolved,
     test: testPathResolved,
     pwa: appConfig.pwa,
+    watchURL: appConfig.watchURL || 'http://localhost:3000',
     testBundle: defaultAppConfig.testBundle,
     templates: templatesResolved || srcPath + '/' + templatesPath,
     templatesPath: templatesPath,

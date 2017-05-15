@@ -9,6 +9,8 @@
 const baseConfig = require('./karma.conf.js');
 const defaultAppConfig = require('./appConfig');
 const appConfig = require(process.env.APP_CONFIG || './appConfig');
+const webpackConfig = require('./webpack.test.js');
+delete webpackConfig.entry;
 
 const bundle = defaultAppConfig.testBundlePath;
 const specs = appConfig.testSpecs;
@@ -29,6 +31,8 @@ module.exports = function (config) {
       [bundle]: ['coverage', 'webpack', 'sourcemap'],
       [specs]: ['webpack', 'sourcemap']
     },
+
+    webpack: webpackConfig
 
   });
 };
