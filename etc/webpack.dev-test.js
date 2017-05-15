@@ -28,7 +28,7 @@ const OpenBrowserPlugin = require('open-browser-webpack-plugin');
  *
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
-let config =  webpackMerge(commonConfig, {
+let config =  webpackMerge(testConfig, {
 
   plugins: [
     /**
