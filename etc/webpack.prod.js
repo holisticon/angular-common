@@ -23,6 +23,7 @@ const IgnorePlugin = webpack.IgnorePlugin;
 const UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 const WebpackMd5Hash = require('webpack-md5-hash');
 const OfflinePlugin = require('offline-plugin');
+const AotPlugin = require("@ngtools/webpack").AotPlugin;
 
 /**
  * Webpack Constants
@@ -195,6 +196,14 @@ let config = webpackMerge(commonConfig, {
     //   regExp: /\.css$|\.html$|\.js$|\.map$/,
     //   threshold: 2 * 1024
     // })
+
+
+    // Angular AOT compiler
+    new AotPlugin({
+      tsConfigPath: "tsconfig.aot.json",
+      entryModule: appConfig.entryModule,
+      typeChecking: false
+    }),
 
   ]
 

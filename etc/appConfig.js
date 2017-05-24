@@ -16,6 +16,7 @@ var appConfig = {
     title: 'AngularCommon',
     dir: 'dist/test-reports'
   },
+  entryModule: path.resolve(sourceRoot, 'app/app.module#AppModule'),
   copy: [],
   indexFiles: [{
     chunks: ['main', 'polyfills', 'vendor'],

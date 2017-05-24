@@ -105,7 +105,7 @@ var config = {
      *
      * See: http://webpack.github.io/docs/configuration.html#resolve-extensions
      */
-    extensions: ['.ts', '.js', '.json'],
+    extensions: ['.aot.ts', '.ts', '.js', '.json'],
 
     // Make sure root is src
     modules: [
@@ -137,7 +137,7 @@ var config = {
       {
         test: /\.ts$/,
         loader: 'string-replace-loader',
-        query: {
+        options: {
           search: '(System|SystemJS)(.*[\\n\\r]\\s*\\.|\\.)import\\((.+)\\)',
           replace: '$1.import($3).then(mod => (mod.__esModule && mod.default) ? mod.default : mod)',
           flags: 'g'
@@ -190,7 +190,10 @@ var config = {
        */
       {
         test: /\.ts$/,
-        loaders: ['awesome-typescript-loader']
+        loaders: [
+          'awesome-typescript-loader',
+          "@ngtools/webpack"
+        ]
       },
       {
         test: /\.(png|woff|woff2|eot|ttf|svg)$/,

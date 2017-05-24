@@ -24,9 +24,11 @@
     "release:major": "npm version major && npm run release:pre && git push origin && git push origin --tags && npm run release:post && npm run version-and-push",
     "release:minor": "npm version minor && npm run release:pre && git push origin && git push origin --tags && npm run release:post && npm run version-and-push",
     "release:patch": "npm version patch && npm run release:pre && git push origin && git push origin --tags && npm run release:post && npm run version-and-push",
-    "version-and-push": "git push origin && git push origin --tags && npm run publish-and-merge",
+    "version-and-push": "git push origin && git push origin --tags && npm run publish-and-merge"
   },
   "dependencies": {
+    "@angular/tsc-wrapped": "4.0.3",
+    "@ngtools/webpack": "1.2.10",
     "@types/core-js": "0.9.37",
     "@types/jasmine": "2.5.46",
     "@types/node": "7.0.8",
@@ -90,6 +92,7 @@
   "devDependencies": {
     "@angular/common": "4.0.3",
     "@angular/compiler": "4.0.3",
+    "@angular/compiler-cli": "4.0.3",
     "@angular/core": "4.0.3",
     "@angular/forms": "4.0.3",
     "@angular/http": "4.0.3",
@@ -109,6 +112,7 @@
   "peerDependencies": {
     "@angular/common": "^4.0.3",
     "@angular/compiler": "^4.0.3",
+    "@angular/compiler-cli": "4.0.3",
     "@angular/core": "^4.0.3",
     "@angular/forms": "^4.0.3",
     "@angular/http": "^4.0.3",
