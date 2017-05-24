@@ -133,6 +133,21 @@ module.exports = appConfig;
 
 ```
 
+#### Custom watch URL
+
+```javascript
+...
+
+var appConfig = {
+  ...
+    watchURL: 'http://localhost:3000/?ionicplatform=ios',
+  ...
+};
+
+module.exports = appConfig;
+
+```
+
 #### JUnit-Report customization
 
 ```javascript

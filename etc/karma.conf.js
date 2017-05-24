@@ -11,7 +11,7 @@ const helpers = require('./helpers');
 const debugLog = util.debuglog(helpers.DEBUG_ENV);
 const isDebug = helpers.isDebug();
 const appConfig = helpers.getAppConfig();
-const webpackConfig = require('./webpack.test.js');
+const webpackConfig = require('./webpack.dev-test.js');
 delete webpackConfig.entry;
 
 const JUNIT = appConfig.junit;
@@ -49,7 +49,6 @@ module.exports = function (config) {
      * we are building the test environment in ./spec-bundle.js
      */
     files: [
-      'node_modules/babel-polyfill/dist/polyfill.js',
       bundle
     ],
 
@@ -58,18 +57,25 @@ module.exports = function (config) {
      * available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
      */
     preprocessors: {
-      [bundle]: ['webpack', 'sourcemap']
+      [bundle]: ['coverage', 'webpack', 'sourcemap']
     },
 
     webpack: webpackConfig,
 
+
     coverageReporter: {
-      dir: 'target/coverage-reports/',
-      reporters: [
-        {type: 'text-summary'},
-        {type: 'json'},
-        {type: 'html'}
-      ]
+      type: 'in-memory'
+    },
+
+    coverageIstanbulReporter: {
+        reports: [ 'text-summary' ],
+        fixWebpackSourcePaths: true
+    },
+
+    remapCoverageReporter: {
+      'text-summary': null,
+      json: 'target/ccoverage/coverage.json',
+      html: 'target/ccoverage/html'
     },
 
     // Webpack please don't spam the console when running in karma!
@@ -107,7 +113,7 @@ module.exports = function (config) {
      * possible values: 'dots', 'progress'
      * available reporters: https://npmjs.org/browse/keyword/karma-reporter
      */
-    reporters: ['progress', 'junit', 'kjhtml'],
+    reporters: ['progress', 'junit', 'coverage', 'remap-coverage', 'kjhtml'],
 
     /**
      * See https://github.com/karma-runner/karma-junit-reporter#configuration
@@ -145,7 +151,7 @@ module.exports = function (config) {
     singleRun: false
   });
 
-  config.files.push({pattern: specs, watched: false});
+  config.files.push({ pattern: specs, watched: false });
   config.preprocessors[specs] = ['webpack', 'sourcemap'];
 
   debugLog('Using following karma config:', config);

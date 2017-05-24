@@ -188,7 +188,6 @@ var config = {
        *
        * See: https://github.com/s-panferov/awesome-typescript-loader
        */
-      // note that babel-loader is configured to run after ts-loader
       {
         test: /\.ts$/,
         loaders: ['awesome-typescript-loader']
@@ -220,8 +219,17 @@ var config = {
        * See: https://github.com/webpack/raw-loader
        */
       {
-        test: /\.(html|xml|json)$/,
+        test: /\.(html|xml)$/,
         loader: 'raw-loader'
+      },
+      /* JSON loader support for *.jspn
+       * Returns file content as string
+       *
+       * See: https://github.com/webpack/json-loader
+       */
+      {
+        test: /\.(json)$/,
+        loader: 'json-loader'
       }
 
     ]

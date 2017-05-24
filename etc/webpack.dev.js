@@ -43,7 +43,7 @@ const METADATA = webpackMerge(commonConfig.metadata, {
  *
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
-let config =  webpackMerge(commonConfig, {
+let config = webpackMerge(commonConfig, {
 
   /**
    * Developer tool to enhance debugging
@@ -125,7 +125,7 @@ let config =  webpackMerge(commonConfig, {
      *
      * See: https://github.com/baldore/open-browser-webpack-plugin#usage
      */
-    new OpenBrowserPlugin({ url: 'http://localhost:3000' })
+    new OpenBrowserPlugin({ url: appConfig.watchURL })
   ],
 
   /**

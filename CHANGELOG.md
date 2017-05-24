@@ -1,3 +1,20 @@
+<a name="1.3.1"></a>
+## [1.3.1](https://github.com/holisticon/angular-common/compare/v1.3.0...v1.3.1) (2017-05-24)
+
+
+### Bug Fixes
+
+* **config-error:** Resolve config error ([4957a02](https://github.com/holisticon/angular-common/commit/4957a02))
+* **karma-setup:** Correct karma setup ([d42ac73](https://github.com/holisticon/angular-common/commit/d42ac73))
+
+
+### Features
+
+* **babel:** Drop babel at all ([5fa905c](https://github.com/holisticon/angular-common/commit/5fa905c))
+* **dev-mode:** Improve dev mode ([a3f0f5a](https://github.com/holisticon/angular-common/commit/a3f0f5a))
+
+
+
 <a name="1.3.0"></a>
 # [1.3.0](https://github.com/holisticon/angular-common/compare/v1.2.3...v1.3.0) (2017-04-28)
 

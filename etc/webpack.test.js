@@ -59,9 +59,11 @@ module.exports = webpackMerge(commonConfig, {
       {
         test: /\.(js|ts)$/,
         loader: 'istanbul-instrumenter-loader',
+        options: {
+          esModules: true
+        },
         include: [
-          appConfig.srcPath,
-          appConfig.testPath
+          appConfig.srcPath
         ],
         exclude: [
           /\.(e2e|spec)\.ts$/,

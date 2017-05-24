@@ -26,7 +26,6 @@
     ]
   },
   "awesomeTypescriptLoaderOptions": {
-    "useBabel": true,
     "useCache": true
   },
   "compileOnSave": false,

@@ -1,5 +1,6 @@
 properties properties: [
-  [$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '30', numToKeepStr: '10']]
+  [$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '30', numToKeepStr: '10']],
+  disableConcurrentBuilds()
 ]
 
 node {
@@ -42,7 +43,7 @@ node {
     }
 
   } catch (e) {
-    rocketSend channel: 'jenkins', emoji: ':rotating_light:', message: 'Fehler'
+    rocketSend channel: 'holi-oss', emoji: ':rotating_light:', message: 'Fehler'
     throw e
   }
 
