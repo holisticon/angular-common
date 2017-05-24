@@ -17,6 +17,7 @@ var appConfig = {
     dir: 'dist/test-reports'
   },
   entryModule: path.resolve(sourceRoot, 'app/app.module#AppModule'),
+  mangle: {},
   copy: [],
   indexFiles: [{
     chunks: ['main', 'polyfills', 'vendor'],

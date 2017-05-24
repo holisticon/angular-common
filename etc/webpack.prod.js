@@ -118,7 +118,7 @@ let config = webpackMerge(commonConfig, {
       'ENV': JSON.stringify(METADATA.ENV),
       'HMR': METADATA.HMR,
       'process.env': {
-        'ENV': JSON.stringify(METADATA.ENV),
+        'ENV': JSON.stringify(ENV),
         'NODE_ENV': JSON.stringify(METADATA.ENV),
         'HMR': METADATA.HMR
       }
@@ -133,8 +133,9 @@ let config = webpackMerge(commonConfig, {
      // NOTE: To debug prod builds uncomment //debug lines and comment //prod lines
      */
     new UglifyJsPlugin({
+      debug: false,
       // beautify: true, //debug
-      // mangle: false, //debug
+      //mangle: false, //debug
       // dead_code: false, //debug
       // unused: false, //debug
       // deadCode: false, //debug
@@ -146,9 +147,37 @@ let config = webpackMerge(commonConfig, {
       //   unused: false
       // }, // debug
       // comments: true, //debug
+      sourceMap: false, //prod
       beautify: false, //prod
-      mangle: { screw_ie8: true }, //prod
-      compress: { screw_ie8: true }, //prod
+      mangle: {
+        except: appConfig.mangle.except || ['jQuery', 'angular'],
+        screw_ie8: true,
+        sequences: true,  // join consecutive statemets with the “comma operator”
+        properties: true,  // optimize property access: a["foo"] → a.foo
+        dead_code: true,  // discard unreachable code
+        drop_debugger: true,  // discard “debugger” statements
+        unsafe: false, // some unsafe optimizations (see below)
+        conditionals: true,  // optimize if-s and conditional expressions
+        comparisons: true,  // optimize comparisons
+        evaluate: true,  // evaluate constant expressions
+        booleans: true,  // optimize boolean expressions
+        loops: true,  // optimize loops
+        unused: true,  // drop unused variables/functions
+        hoist_funs: true,  // hoist function declarations
+        hoist_vars: false, // hoist variable declarations
+        if_return: true,  // optimize if-s followed by return/continue
+        join_vars: true,  // join var declarations
+        cascade: true,  // try to cascade `right` into `left` in sequences
+        side_effects: true,  // drop side-effect-free statements
+        warnings: false,
+        global_defs: { // global definitions
+          NODE_ENV: METADATA.ENV,
+          ENV: METADATA.ENV
+        }
+      }, //prod
+      compress: {
+        screw_ie8: true
+      }, //prod
       comments: false //prod
     }),
     // enforce linting on prod build
@@ -197,18 +226,18 @@ let config = webpackMerge(commonConfig, {
     //   threshold: 2 * 1024
     // })
 
-
-    // Angular AOT compiler
-    new AotPlugin({
-      tsConfigPath: "tsconfig.aot.json",
-      entryModule: appConfig.entryModule,
-      typeChecking: false
-    }),
-
   ]
 
 });
 if (appConfig.pwa) {
   config.plugins.push(new OfflinePlugin(appConfig.pwa));
+}
+if (appConfig.entryModule) {
+  // Angular AOT compiler
+  config.plugins.push(new AotPlugin({
+    tsConfigPath: 'tsconfig.aot.json',
+    entryModule: appConfig.entryModule,
+    typeChecking: false
+  }));
 }
 module.exports = config

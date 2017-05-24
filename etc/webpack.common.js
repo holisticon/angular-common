@@ -190,10 +190,12 @@ var config = {
        */
       {
         test: /\.ts$/,
-        loaders: [
+        loaders: appConfig.entryModule ? [
           'awesome-typescript-loader',
-          "@ngtools/webpack"
-        ]
+          '@ngtools/webpack'
+        ] : [
+            'awesome-typescript-loader'
+          ]
       },
       {
         test: /\.(png|woff|woff2|eot|ttf|svg)$/,
