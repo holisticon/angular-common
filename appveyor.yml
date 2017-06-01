@@ -6,13 +6,9 @@ environment:
         - NPM_VERSION: "3"
         - NPM_VERSION: "4"
         # node.js
-        - NODE_VERSION: "4.4"
-        - NODE_VERSION: "4.5"
-        - NODE_VERSION: "4"
-        - NODE_VERSION: "5.0"
-        - NODE_VERSION: "5"
         - NODE_VERSION: "6"
         - NODE_VERSION: "7"
+        - NODE_VERSION: "8"
         - NODE_VERSION: "stable"
 
 platform:
