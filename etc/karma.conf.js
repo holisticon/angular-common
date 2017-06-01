@@ -137,11 +137,22 @@ module.exports = function (config) {
     autoWatch: true,
 
     /*
+     * custom launchers to run tests with
+     */
+    customLaunchers: {
+      Chrome_headless: {
+        base: 'Chrome',
+        flags: ['--headless', '--disable-gpu']
+      }
+    },
+
+    /*
      * start these browsers
      * available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
      */
     browsers: [
-      'PhantomJS'
+      'PhantomJS',
+      'Chrome_headless'
     ],
 
     /*
