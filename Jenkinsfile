@@ -3,7 +3,7 @@ properties properties: [
   disableConcurrentBuilds()
 ]
 
-node {
+node("mac") {
   def buildNumber = env.BUILD_NUMBER
   def branchName = env.BRANCH_NAME
   def workspace = env.WORKSPACE
