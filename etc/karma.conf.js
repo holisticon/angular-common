@@ -152,7 +152,7 @@ module.exports = function (config) {
      */
     browsers: [
       'PhantomJS',
-      'Chrome_headless'
+      //'Chrome_headless'
     ],
 
     /*
