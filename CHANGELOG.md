@@ -1,3 +1,20 @@
+<a name="1.4.0"></a>
+# [1.4.0](https://github.com/holisticon/angular-common/compare/v1.3.1...v1.4.0) (2017-07-10)
+
+
+### Bug Fixes
+
+* **build:** Fix travis build ([bd38d62](https://github.com/holisticon/angular-common/commit/bd38d62))
+
+
+### Features
+
+* **AoT-build:** Basic support for AoT build, see [#31](https://github.com/holisticon/angular-common/issues/31) ([fd0c269](https://github.com/holisticon/angular-common/commit/fd0c269))
+* **AoT-build:** Basic support for AoT build, see [#31](https://github.com/holisticon/angular-common/issues/31) ([60f389f](https://github.com/holisticon/angular-common/commit/60f389f))
+* **AoT-build:** Fix build, see [#31](https://github.com/holisticon/angular-common/issues/31) ([ce6c9e7](https://github.com/holisticon/angular-common/commit/ce6c9e7))
+
+
+
 <a name="1.3.1"></a>
 ## [1.3.1](https://github.com/holisticon/angular-common/compare/v1.3.0...v1.3.1) (2017-05-24)
 
