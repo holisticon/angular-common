@@ -83,7 +83,7 @@
     "typings": "2.1.0",
     "url-loader": "0.5.9",
     "webpack": "3.0.0",
-    "webpack-dev-server": "2.5.0",
+    "webpack-dev-server": "2.5.1",
     "webpack-md5-hash": "0.0.5",
     "webpack-merge": "4.1.0",
     "webpack-notifier": "1.5.0",
