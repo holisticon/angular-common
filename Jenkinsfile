@@ -34,8 +34,8 @@ node('mac') {
     }
 
     stage('Test') {
-      nodeJS.nvm('test')
-      nodeJS.nvm('e2e')
+      nodeJS.nvmRun('test')
+      nodeJS.nvmRun('e2e')
       junit 'target/test-reports/TEST*.xml'
       junit 'target/e2e-reports/TEST*.xml'
     }
