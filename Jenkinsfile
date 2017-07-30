@@ -41,7 +41,7 @@ node('mac') {
     }
 
     stage('Publish NPM snapshot') {
-      nodeJS.publishSnapshot('.', ${buildNumber}, ${branchName})
+      nodeJS.publishSnapshot('.', "${buildNumber}", "${branchName}")
     }
 
   } catch (e) {
