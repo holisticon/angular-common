@@ -4,8 +4,8 @@
   "description": "Common angular build module for Angular 2",
   "scripts": {
     "preclean": "npm i rimraf",
-    "clean": "rimraf .awcache node_modules  dist target 'src/**/*.js' 'src/**/*.js.map' test/e2e/.awcache test/e2e/node_modules",
-    "postclean": "npm i && cd test/e2e && npm i",
+    "clean": "rimraf npm-debug.log* .awcache node_modules  dist target 'src/**/*.js' 'src/**/*.js.map' test/e2e/.awcache test/e2e/node_modules",
+    "postclean": "npm i && cd test/e2e && npm i && npm i ../..",
     "webpack": "webpack",
     "watch": "cross-env NODE_ENV=development webpack-dev-server --inline  --progress  --port 3000 ",
     "build": "npm run tslint && npm run tsc && cross-env NODE_ENV=production webpack",
