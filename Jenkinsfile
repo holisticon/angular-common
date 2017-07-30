@@ -29,7 +29,7 @@ node('mac') {
     }
 
     stage('Build') {
-      nodeJS.nvm('install')
+      nodeJS.nvmRun('clean')
       nodeJS.nvmRun('build')
     }
 
