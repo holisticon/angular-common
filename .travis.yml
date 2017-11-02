@@ -1,14 +1,18 @@
 sudo: required
 dist: trusty
 language: node_js
-node_js:
-  - "6"
-  - "7"
-  - "8"
-  - "stable"
+
 env:
-  - NPM_VERSION=3
-  - NPM_VERSION=4
+  matrix:
+    - NODE_VERSION="4" NPM_VERSION="3"
+    - NODE_VERSION="5" NPM_VERSION="3"
+    - NODE_VERSION="5" NPM_VERSION="3"
+    - NODE_VERSION="6" NPM_VERSION="3"
+    - NODE_VERSION="6" NPM_VERSION="4"
+    - NODE_VERSION="7" NPM_VERSION="3"
+    - NODE_VERSION="7" NPM_VERSION="4"
+    - NODE_VERSION="8" NPM_VERSION="5"
+
 before_install:
   - npm install -g npm@$NPM_VERSION
 before_script:
