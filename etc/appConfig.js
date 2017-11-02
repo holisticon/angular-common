@@ -16,6 +16,7 @@ var appConfig = {
     title: 'AngularCommon',
     dir: 'dist/test-reports'
   },
+  mangle: {},
   copy: [],
   indexFiles: [{
     chunks: ['main', 'polyfills', 'vendor'],

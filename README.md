@@ -87,6 +87,16 @@ Configure proxy:
 
 ### Advanced Usage
 
+#### AoT
+
+Add your module here:
+```
+...
+var appConfig = {
+  entryModule: path.resolve(sourceRoot, 'app/app.module#AppModule')
+...
+```
+
 #### Debugging
 
 If you need to debug the tests use the node-inspector:
