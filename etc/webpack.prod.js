@@ -62,8 +62,6 @@ let config = webpackMerge(commonConfig, {
          */
         filename: '[name].[chunkhash].bundle.js',
 
-        devtool: 'hidden-source-map',
-
         /**
          * The filename of non-entry chunks as relative path
          * inside the output.path directory.
