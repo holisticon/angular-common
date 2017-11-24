@@ -1,5 +1,7 @@
 # Angular Common Module
 
+> **DEPRECATED** , use [Angular-CLI](https://github.com/angular/angular-cli) instead
+
 [![Greenkeeper badge](https://badges.greenkeeper.io/holisticon/angular-common.svg)](https://greenkeeper.io/)
 
 [![Build Status](https://travis-ci.org/holisticon/angular-common.svg?branch=master)](https://travis-ci.org/holisticon/angular-common)
