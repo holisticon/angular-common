@@ -1,3 +1,36 @@
+<a name="1.4.2"></a>
+## [1.4.2](https://github.com/holisticon/angular-common/compare/v1.4.1...v1.4.2) (2017-11-24)
+
+
+### Features
+
+* **deprecation:** Discontinue this repo ([bf36501](https://github.com/holisticon/angular-common/commit/bf36501))
+
+
+### BREAKING CHANGES
+
+* **deprecation:** DO NOT USE THIS REPO ANYMORE !!!
+
+
+
+<a name="1.4.1"></a>
+## [1.4.1](https://github.com/holisticon/angular-common/compare/v1.4.0...v1.4.1) (2017-11-02)
+
+
+### Bug Fixes
+
+* **config-error:** Remove invalid configuration object ([483b6b9](https://github.com/holisticon/angular-common/commit/483b6b9))
+* **dependency:** Fix [@angular](https://github.com/angular)/forms peer dependency issue ([7b73aa3](https://github.com/holisticon/angular-common/commit/7b73aa3))
+* **phantom-timeout:** Fix phantomjs timeout error ([2b22b91](https://github.com/holisticon/angular-common/commit/2b22b91))
+* **source-map:** Correct source map usage ([3bed5c6](https://github.com/holisticon/angular-common/commit/3bed5c6))
+
+
+### Features
+
+* **webpack:** Update webpack ([0a62628](https://github.com/holisticon/angular-common/commit/0a62628))
+
+
+
 <a name="1.4.0"></a>
 # [1.4.0](https://github.com/holisticon/angular-common/compare/v1.3.1...v1.4.0) (2017-07-10)
 
